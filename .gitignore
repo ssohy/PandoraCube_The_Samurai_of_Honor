@@ -74,3 +74,6 @@ crashlytics-build.properties
 # 긴 파일 경로를 무시하기 위한 패턴 추가
 The_Samurai_of_Honor/Library/PackageCache/com.unity.ide.visualstudio@2.0.18/Editor/AppleEventIntegration~/AppleEventIntegration.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
 
+# Git이 무시하도록 지시하는 패턴 추가
+The_Samurai_of_Honor/Logs/
+The_Samurai_of_Honor/Temp/
