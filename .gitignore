@@ -70,3 +70,7 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# 긴 파일 경로를 무시하기 위한 패턴 추가
+The_Samurai_of_Honor/Library/PackageCache/com.unity.ide.visualstudio@2.0.18/Editor/AppleEventIntegration~/AppleEventIntegration.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+
