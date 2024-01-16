@@ -16,9 +16,11 @@ public class Player : MonoBehaviour
     void Update()
     {
         Move();
+        Attack();
     }
 
-    void Move() // 현재는 편의성을 위해 W, A, D로 이동중
+    //#.이동(ui추가할 때 버튼으로 수정할 예정)
+    void Move() // 현재는 편의성을 위해 WASD로 이동중
     {
         if (Input.GetKey(KeyCode.A))
         {
@@ -33,6 +35,19 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             player.transform.Translate(new Vector3(0, 0, moveSpeed * Time.deltaTime));
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            player.transform.Translate(new Vector3(0, 0, -moveSpeed * Time.deltaTime));
+        }
+    }
+
+    //#.공격
+    void Attack()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+
         }
     }
 
