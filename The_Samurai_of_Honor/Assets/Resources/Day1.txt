@@ -1,0 +1,3 @@
+5,Samurai,1
+0.1,Bowel,2
+0.1,Skull,3
