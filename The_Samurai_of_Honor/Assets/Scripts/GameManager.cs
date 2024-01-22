@@ -32,23 +32,19 @@ public class GameManager : MonoBehaviour
         currentDay = 1;
         dTime = 0;
         isDay = true;
-        IsDay();
+        
         DayStart();
     }
 
-
+    void Update()
+    {
+        IsDay();
+    }
     public void DayStart()
     {
-        //#.Stage UI Load
-        //stageAnim.SetTrigger("On");
-        //stageAnim.GetComponent<Text>().text = "Stage " + stage + "\nStart";
-        //clearAnim.GetComponent<Text>().text = "Stage " + stage + "\nClear";
 
-        //#.Enemy Spawn File Read
+        //#.Enemy Spawn File 읽어오기
         ReadSpawnFile();
-
-        //#.Fade In
-        //fadeAnim.SetTrigger("In");
     }
 
     // Day별 낮, 밤 타이머 설정하기
@@ -60,9 +56,10 @@ public class GameManager : MonoBehaviour
             if (isDay)
             {
                 dTime += Time.deltaTime;
+
                 if (dTime >= 900f)
                 {
-                    Debug.Log("15분 경과");
+                    //Debug.Log("15분 경과");
                     dTime = 0;
                     isDay = false;
                 }
@@ -72,7 +69,7 @@ public class GameManager : MonoBehaviour
                 dTime += Time.deltaTime;
                 if (dTime >= 900f)
                 {
-                    Debug.Log("15분 경과");
+                    //Debug.Log("15분 경과");
                     dTime = 0;
                     isDay = true;
                 }
@@ -84,10 +81,9 @@ public class GameManager : MonoBehaviour
             if (isDay)
             {
                 dTime += Time.deltaTime;
-                Debug.Log("타이머 시작");
                 if (dTime >= 600f)
                 {
-                    Debug.Log("10분 경과");
+                    //Debug.Log("10분 경과");
                     dTime = 0;
                     isDay = false;
                 }
@@ -95,10 +91,9 @@ public class GameManager : MonoBehaviour
             else
             {
                 dTime += Time.deltaTime;
-                Debug.Log("밤 시작");
                 if (dTime >= 900f)
                 {
-                    Debug.Log("15분 경과");
+                    //Debug.Log("15분 경과");
                     dTime = 0;
                     isDay = true;
                 }
