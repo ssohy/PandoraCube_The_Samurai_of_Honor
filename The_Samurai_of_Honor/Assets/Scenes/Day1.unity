@@ -209,6 +209,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 352e12a0f4d477441bfeae2969cfbf9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  enemyObjs: []
+  objectManager: {fileID: 0}
+  currentDay: 0
+  dTime: 0
+  isDay: 0
+  spawnPoints: []
+  spawnIndex: 0
+  spawnEnd: 0
+  nextSpawnDelay: 0
+  curSpawnDelay: 0
 --- !u!4 &1381164217
 Transform:
   m_ObjectHideFlags: 0
@@ -240,7 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a918ba02fed88e540864992cf778f6d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 10
   player: {fileID: 0}
   hp: 0
 --- !u!54 &1670351100
@@ -446,7 +457,7 @@ Transform:
   m_GameObject: {fileID: 1989688299}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 100}
+  m_LocalScale: {x: 10, y: 1, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
