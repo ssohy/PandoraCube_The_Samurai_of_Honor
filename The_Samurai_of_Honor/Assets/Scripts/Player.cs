@@ -4,17 +4,25 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    float h, v;
-    Vector3 moveV;
-    public float moveSpeed; // 이동 속도
     public GameObject player;
     public int hp;
 
-    void Start()
+    // (이동 변수)
+    float h, v;
+    Vector3 moveV;
+    public float moveSpeed; 
+
+    // (공격 변수)
+    bool AttackDown;
+    float AttackDelay;
+    bool isAttackReady;
+    public Sword sword;
+    // Animator anim;
+
+    void Awake()
     {
         player = GameObject.Find("Player");
         hp = 100;
-
     }
 
     void Update()
@@ -32,15 +40,20 @@ public class Player : MonoBehaviour
         moveV = new Vector3(h, 0, v).normalized;
 
         transform.position += moveV * moveSpeed * Time.deltaTime;
-        
     }
 
     //#.공격
     void Attack() // 현재는 편의성을 위해 좌클릭, 우클릭으로 공격
     {
-        if (Input.GetMouseButtonDown(0)) // 기본 공격
-        {
+        AttackDelay += Time.deltaTime;
+        isAttackReady = sword.rate < AttackDelay;
 
+        if (Input.GetMouseButtonDown(0) && isAttackReady) // 기본 공격
+        {
+            Debug.Log("기본 공격");
+            sword.StartSwing();
+            //anim.SetTrigger("doSwing");
+            AttackDelay = 0;
         }
 
         if (Input.GetMouseButtonDown(1)) // 더블 공격
