@@ -18,9 +18,9 @@ public class ObjectManager : MonoBehaviour
 
     void Awake()
     {
-        bowel = new GameObject[10]; // 몇개?
-        samurai = new GameObject[10]; // 몇개?
-        skull = new GameObject[20]; // 몇개?
+        bowel = new GameObject[70]; // 몇개?
+        samurai = new GameObject[70]; // 몇개?
+        skull = new GameObject[70]; // 몇개?
 
         Generate();
     }
