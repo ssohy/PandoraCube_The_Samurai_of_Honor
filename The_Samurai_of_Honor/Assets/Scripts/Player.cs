@@ -50,15 +50,15 @@ public class Player : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && isAttackReady) // 기본 공격
         {
-            Debug.Log("기본 공격");
+            //Debug.Log("기본 공격");
             sword.StartSwing();
             //anim.SetTrigger("doSwing");
             AttackDelay = 0;
         }
 
-        if (Input.GetMouseButtonDown(1)) // 더블 공격
+        if (Input.GetMouseButtonDown(1) && isAttackReady) // 더블 공격
         {
-            Debug.Log("더블 공격");
+            //Debug.Log("더블 공격");
             sword.StartDoubleSwing();
             //anim.SetTrigger("doSwing");
             AttackDelay = 0;

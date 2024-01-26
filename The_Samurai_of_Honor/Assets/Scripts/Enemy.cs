@@ -7,7 +7,8 @@ public class Enemy : MonoBehaviour
     public ObjectManager objectManager;
     public GameManager gameManager;
 
-    public int enemyHp; 
+    public int enemyMaxHp;
+    public int enemyCurHp;
     public string enemyName; // Samurai, Bowel, Skull
     public int attackDamage;
     public float speed;
@@ -15,29 +16,57 @@ public class Enemy : MonoBehaviour
     public bool isDay;
     public int currentDay;
 
+    Rigidbody rigid;
+    BoxCollider boxCollider;
+    CapsuleCollider capsuleCollider;
 
     void Awake()
     {
-
+        rigid = GetComponent<Rigidbody>();
+        boxCollider = GetComponent<BoxCollider>();
+        capsuleCollider = GetComponent<CapsuleCollider>();
     }
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Melee")
+        {
+            Sword sword = other.GetComponent<Sword>();
+            if (sword.damage == sword.basicDamage) // 기본 공격
+            {
+                enemyCurHp -= sword.damage;
+                Debug.Log("현재 체력 : " + enemyCurHp);
+            }
+            else if(sword.damage == sword.doubleDamage) // 더블 공격
+            {
+                enemyCurHp -= sword.damage;
+            }
+        }
+    }
+
+
+
     void OnEnable()
     {
         currentDay = gameManager.currentDay;
         isDay = gameManager.isDay;
         switch (enemyName)
         {
-
+            case "TestEnemy":
+                enemyMaxHp = 200;
+                enemyCurHp = 200;
+                attackDamage = 10;
+                break;
             case "Samurai":
                 if (isDay)
                 {
                     if (currentDay == 3)
                     {
-                        enemyHp = 60;
+                        enemyMaxHp = 60;
                         attackDamage = 10;
                     }
                     else
                     {
-                        enemyHp = 30;
+                        enemyMaxHp = 30;
                         attackDamage = 10;
                     }
                 }
@@ -45,12 +74,12 @@ public class Enemy : MonoBehaviour
                 {
                     if(currentDay == 3)
                     {
-                        enemyHp = 60;
+                        enemyMaxHp = 60;
                         attackDamage = 10;
                     }
                     else
                     {
-                        enemyHp = 50;
+                        enemyMaxHp = 50;
                         attackDamage = 10;
                     }
                 }
@@ -58,24 +87,24 @@ public class Enemy : MonoBehaviour
             case "Bowel":
                 if (isDay)
                 {
-                    enemyHp = 60;
+                    enemyMaxHp = 60;
                     attackDamage = 40;
                 }
                 else
                 {
                     if(currentDay == 1)
                     {
-                        enemyHp = 30;
+                        enemyMaxHp = 30;
                         attackDamage = 20;
                     }
                     else if(currentDay == 2)
                     {
-                        enemyHp = 40;
+                        enemyMaxHp = 40;
                         attackDamage = 30;
                     }
                     else if (currentDay == 3)
                     {
-                        enemyHp = 60;
+                        enemyMaxHp = 60;
                         attackDamage = 40;
                     }
 
@@ -84,24 +113,24 @@ public class Enemy : MonoBehaviour
             case "Skull":
                 if (isDay)
                 {
-                    enemyHp = 80;
+                    enemyMaxHp = 80;
                     attackDamage = 10;
                 }
                 else
                 {
                     if (currentDay == 1)
                     {
-                        enemyHp = 40;
+                        enemyMaxHp = 40;
                         attackDamage = 10;
                     }
                     else if (currentDay == 2)
                     {
-                        enemyHp = 80;
+                        enemyMaxHp = 80;
                         attackDamage = 10;
                     }
                     else if (currentDay == 3)
                     {
-                        enemyHp = 90;
+                        enemyMaxHp = 90;
                         attackDamage = 20;
                     }
                     
