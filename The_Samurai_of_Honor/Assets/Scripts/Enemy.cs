@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
 
     void Awake()
     {
-        //gameManager = GetComponent<GameManager>();
+
     }
     void OnEnable()
     {

@@ -58,7 +58,10 @@ public class Player : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1)) // 더블 공격
         {
-
+            Debug.Log("더블 공격");
+            sword.StartDoubleSwing();
+            //anim.SetTrigger("doSwing");
+            AttackDelay = 0;
         }
     }
 
