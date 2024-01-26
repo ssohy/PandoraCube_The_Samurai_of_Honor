@@ -18,6 +18,11 @@ public class Sword : MonoBehaviour
         StopCoroutine("Swing");
         StartCoroutine("Swing");
     }
+    public void StartDoubleSwing()
+    {
+        StopCoroutine("DoubleSwing");
+        StartCoroutine("DoubleSwing");
+    }
     IEnumerable Swing()
     {
         yield return new WaitForSeconds(0.1f);
@@ -27,6 +32,14 @@ public class Sword : MonoBehaviour
         meleeArea.enabled = false;
     }
 
+    IEnumerable DoubleSwing()
+    {
+        yield return new WaitForSeconds(0.1f);
+        meleeArea.enabled = true;
+
+        yield return new WaitForSeconds(0.3f);
+        meleeArea.enabled = false;
+    }
 }
 
 
