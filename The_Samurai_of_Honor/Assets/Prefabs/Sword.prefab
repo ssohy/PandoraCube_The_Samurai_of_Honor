@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &235843872217794418
+--- !u!1 &7549861808545598884
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,24 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4350534945948820827}
-  - component: {fileID: 2628456589509237187}
-  - component: {fileID: 235843872217794317}
+  - component: {fileID: 6333092328943349645}
+  - component: {fileID: 7549861808545598937}
+  - component: {fileID: 7549861808545598939}
+  - component: {fileID: 7549861808545598938}
   m_Layer: 0
   m_Name: Sword
-  m_TagString: Untagged
+  m_TagString: Melee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4350534945948820827
+--- !u!4 &6333092328943349645
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 235843872217794418}
+  m_GameObject: {fileID: 7549861808545598884}
   m_LocalRotation: {x: -0.0091427425, y: -0.013694809, z: -0.7063757, w: 0.70764554}
   m_LocalPosition: {x: -0.4605198, y: 0.7841989, z: -0.057642527}
   m_LocalScale: {x: 100, y: 99.99999, z: 100}
@@ -32,13 +33,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!137 &2628456589509237187
+--- !u!137 &7549861808545598937
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 235843872217794418}
+  m_GameObject: {fileID: 7549861808545598884}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -132,21 +133,36 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0046119285, y: 0.008019161, z: 0.0023319314}
     m_Extent: {x: 0.00048839254, y: 0.00064656045, z: 0.003400225}
   m_DirtyAABB: 0
---- !u!114 &235843872217794317
+--- !u!114 &7549861808545598939
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 235843872217794418}
+  m_GameObject: {fileID: 7549861808545598884}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 995547f57070be046afb5fcfe0362a9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  damage: 20
+  damage: 0
+  basicDamage: 20
   doubleDamage: 30
-  rate: 0.3
+  rate: 0
+  basicRate: 0.3
   doubleRate: 0.7
-  meleeArea: {fileID: 0}
+  meleeArea: {fileID: 7549861808545598938}
+--- !u!65 &7549861808545598938
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7549861808545598884}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0015137412, y: 0.001022795, z: 0.0068448274}
+  m_Center: {x: -0.00008315407, y: 0.000012242235, z: 0.0029125428}

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
@@ -17,16 +18,25 @@ public class Enemy : MonoBehaviour
     public int currentDay;
 
     Rigidbody rigid;
-    //BoxCollider boxCollider;
+    BoxCollider boxCollider;
     CapsuleCollider capsuleCollider;
     Material mat;
+    NavMeshAgent nav;
+
+    public Transform target;
 
     void Awake()
     {
         rigid = GetComponent<Rigidbody>();
-        //boxCollider = GetComponent<BoxCollider>();
+        boxCollider = GetComponent<BoxCollider>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         //mat = GetComponent<MeshRenderer>().material;
+        nav = GetComponent<NavMeshAgent>();
+    }
+
+    void Update()
+    {
+        nav.SetDestination(target.position);
     }
     void OnTriggerEnter(Collider other)
     {
@@ -41,7 +51,7 @@ public class Enemy : MonoBehaviour
     IEnumerator OnDamage()
     {
         //mat.color = Color.red;
-        yield return new WaitForSeconds(0.1f);
+        yield return null;
 
         if(enemyCurHp > 0)
         {
