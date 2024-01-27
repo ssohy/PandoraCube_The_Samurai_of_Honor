@@ -17,14 +17,14 @@ public class Enemy : MonoBehaviour
     public int currentDay;
 
     Rigidbody rigid;
-    BoxCollider boxCollider;
+    //BoxCollider boxCollider;
     CapsuleCollider capsuleCollider;
     Material mat;
 
     void Awake()
     {
         rigid = GetComponent<Rigidbody>();
-        boxCollider = GetComponent<BoxCollider>();
+        //boxCollider = GetComponent<BoxCollider>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         //mat = GetComponent<MeshRenderer>().material;
     }
