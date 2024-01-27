@@ -19,30 +19,40 @@ public class Enemy : MonoBehaviour
     Rigidbody rigid;
     BoxCollider boxCollider;
     CapsuleCollider capsuleCollider;
+    Material mat;
 
     void Awake()
     {
         rigid = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
         capsuleCollider = GetComponent<CapsuleCollider>();
+        //mat = GetComponent<MeshRenderer>().material;
     }
     void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Melee")
         {
             Sword sword = other.GetComponent<Sword>();
-            if (sword.damage == sword.basicDamage) // 기본 공격
-            {
-                enemyCurHp -= sword.damage;
-                Debug.Log("현재 체력 : " + enemyCurHp);
-            }
-            else if(sword.damage == sword.doubleDamage) // 더블 공격
-            {
-                enemyCurHp -= sword.damage;
-            }
+            enemyCurHp -= sword.damage;
+            StartCoroutine(OnDamage());
         }
     }
 
+    IEnumerator OnDamage()
+    {
+        //mat.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+
+        if(enemyCurHp > 0)
+        {
+            //mat.color = Color.white;
+        }
+        else
+        {
+            //mat.color = Color.gray;
+            Destroy(gameObject, 4);
+        }
+    }
 
 
     void OnEnable()
@@ -62,11 +72,13 @@ public class Enemy : MonoBehaviour
                     if (currentDay == 3)
                     {
                         enemyMaxHp = 60;
+                        enemyCurHp = enemyMaxHp;
                         attackDamage = 10;
                     }
                     else
                     {
                         enemyMaxHp = 30;
+                        enemyCurHp = enemyMaxHp;
                         attackDamage = 10;
                     }
                 }
@@ -75,11 +87,13 @@ public class Enemy : MonoBehaviour
                     if(currentDay == 3)
                     {
                         enemyMaxHp = 60;
+                        enemyCurHp = enemyMaxHp;
                         attackDamage = 10;
                     }
                     else
                     {
                         enemyMaxHp = 50;
+                        enemyCurHp = enemyMaxHp;
                         attackDamage = 10;
                     }
                 }
@@ -88,6 +102,7 @@ public class Enemy : MonoBehaviour
                 if (isDay)
                 {
                     enemyMaxHp = 60;
+                    enemyCurHp = enemyMaxHp;
                     attackDamage = 40;
                 }
                 else
@@ -95,16 +110,19 @@ public class Enemy : MonoBehaviour
                     if(currentDay == 1)
                     {
                         enemyMaxHp = 30;
+                        enemyCurHp = enemyMaxHp;
                         attackDamage = 20;
                     }
                     else if(currentDay == 2)
                     {
                         enemyMaxHp = 40;
+                        enemyCurHp = enemyMaxHp;
                         attackDamage = 30;
                     }
                     else if (currentDay == 3)
                     {
                         enemyMaxHp = 60;
+                        enemyCurHp = enemyMaxHp;
                         attackDamage = 40;
                     }
 
@@ -114,6 +132,7 @@ public class Enemy : MonoBehaviour
                 if (isDay)
                 {
                     enemyMaxHp = 80;
+                    enemyCurHp = enemyMaxHp;
                     attackDamage = 10;
                 }
                 else
@@ -121,16 +140,19 @@ public class Enemy : MonoBehaviour
                     if (currentDay == 1)
                     {
                         enemyMaxHp = 40;
+                        enemyCurHp = enemyMaxHp;
                         attackDamage = 10;
                     }
                     else if (currentDay == 2)
                     {
                         enemyMaxHp = 80;
+                        enemyCurHp = enemyMaxHp;
                         attackDamage = 10;
                     }
                     else if (currentDay == 3)
                     {
                         enemyMaxHp = 90;
+                        enemyCurHp = enemyMaxHp;
                         attackDamage = 20;
                     }
                     
