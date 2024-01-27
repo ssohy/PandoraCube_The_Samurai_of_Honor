@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
     public Sword sword;
     // Animator anim;
 
+    Rigidbody rigid;
+
     void Awake()
     {
         player = GameObject.Find("Player");
@@ -64,5 +66,14 @@ public class Player : MonoBehaviour
             AttackDelay = 0;
         }
     }
+    /*
+    void FreezeRotation()
+    {
+        rigid.angularVelocity = Vector3.zero;
+    }
 
+    void FixedUpdate()
+    {
+        FreezeRotation();
+    }*/
 }

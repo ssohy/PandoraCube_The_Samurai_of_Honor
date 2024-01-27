@@ -38,6 +38,17 @@ public class Enemy : MonoBehaviour
     {
         nav.SetDestination(target.position);
     }
+
+    void FreezeVelocity()
+    {
+        rigid.velocity = Vector3.zero;
+        rigid.angularVelocity = Vector3.zero;
+    }
+
+    void FixedUpdate()
+    {
+        FreezeVelocity();
+    }
     void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Melee")
