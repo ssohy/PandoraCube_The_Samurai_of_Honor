@@ -29,16 +29,14 @@ public class GameManager : MonoBehaviour
     {
         currentDay = objectManager.GetComponent<ObjectManager>().currentDay;
         isDay = objectManager.GetComponent<ObjectManager>().isDay;
-
-        Debug.Log("Game currentDay : " + currentDay);
-        Debug.Log("Game isDay : " + isDay);
         spawnList = new List<Spawn>();
         enemyObjs = new string[] { "Samurai", "Bowel", "Skull" };
         dTime = 0;
         isDay = true;
 
-        CreateEnemyPool();
+        //CreateEnemyPool();
         DayStart();
+        SpawnEnemy();
     }
 
     void Update()
@@ -49,7 +47,7 @@ public class GameManager : MonoBehaviour
     {
 
         //#.Enemy Spawn File 읽어오기
-        //ReadSpawnFile();
+        ReadSpawnFile();
     }
 
     // Day별 낮, 밤 타이머 설정하기
@@ -112,18 +110,50 @@ public class GameManager : MonoBehaviour
 
 
     }
-
-    // 적 오브젝트 풀링 생성
-    void CreateEnemyPool()
+    // 적 스폰 파일
+    void ReadSpawnFile()
     {
+        //#1.변수 초기화
+        spawnList.Clear();
+        spawnIndex = 0;
+        spawnEnd = false;
 
+        //#2. 리스폰 파일 읽기
+        TextAsset textFile = Resources.Load("Day" + currentDay) as TextAsset;
+        StringReader stringReader = new StringReader(textFile.text);
+
+        //#3. 한 줄씩 데이터 저장
+        while (stringReader != null)
+        {
+            string line = stringReader.ReadLine();
+            Debug.Log(line);
+
+            if (line == null)
+                break;
+
+            Spawn spawnData = new Spawn();
+            spawnData.delay = float.Parse(line.Split(',')[0]);
+            spawnData.type = line.Split(',')[1];
+            spawnData.point = int.Parse(line.Split(',')[2]);
+            spawnList.Add(spawnData);
+        }
+
+        stringReader.Close();
+
+        //nextSpawnDelay = spawnList[0].delay;
+    }
+    /*
+    // 적 오브젝트 풀링 생성
+    GameObject CreateEnemyPool()
+    {
         foreach (string enemyName in enemyObjs)
         {
-            Debug.Log("enemyName : " + enemyName);
+            //Debug.Log("enemyName : " + enemyName);
             GameObject enemyPrefab = objectManager.MakeObj(enemyName);
-            //enemyPrefab.SetActive(false);
+            return enemyPrefab;
             enemyPool.Add(enemyPrefab);
         }
+        return null;
     }
 
     // 오브젝트 풀링에서 적 오브젝트 가져오기
@@ -131,93 +161,58 @@ public class GameManager : MonoBehaviour
     {
         // 해당 인덱스의 적 오브젝트 가져오기
         GameObject enemy = enemyPool[index];
+
         return enemy;
+    }*/
+
+
+    void SpawnEnemy()
+    {
+        if (spawnIndex >= spawnList.Count)
+        {
+            spawnEnd = true;
+            return;
+        }
+
+        int enemyIndex = 0;
+        Debug.Log("0여기 실행됨?");
+        switch (spawnList[spawnIndex].type)
+        {
+            case "Samurai":
+                enemyIndex = 0;
+                break;
+            case "Bowel":
+                enemyIndex = 1;
+                break;
+            case "Skull":
+                enemyIndex = 2;
+                break;
+        }
+        int enemyPoint = spawnList[spawnIndex].point;
+        GameObject enemy = objectManager.MakeObj(enemyObjs[enemyIndex]);
+        enemy.transform.position = spawnPoints[enemyPoint].position;
+        Debug.Log("enemyIndex : " + enemyIndex);
+        // 오브젝트 풀에서 적을 가져오기
+        Debug.Log("4여기 실행됨?");
+        if (enemy != null)
+        {
+            Debug.Log("3여기 실행됨?");
+            enemy.transform.position = spawnPoints[enemyPoint].position;
+            enemy.SetActive(true);
+
+            Rigidbody rigid = enemy.GetComponent<Rigidbody>();
+
+            Enemy enemyLogic = enemy.GetComponent<Enemy>();
+            enemyLogic.player = player;
+            enemyLogic.gameManager = this;
+            enemyLogic.objectManager = objectManager;
+
+            spawnIndex++;
+        }
+        else
+        {
+            Debug.LogError("오브젝트 풀에서 적 오브젝트를 가져올 수 없음");
+        }
     }
-
-
-
-
-    /*
-   // 적 스폰 파일
-   void ReadSpawnFile()
-   {
-       //#1.변수 초기화
-       spawnList.Clear();
-       spawnIndex = 0;
-       spawnEnd = false;
-
-       //#2. 리스폰 파일 읽기
-       TextAsset textFile = Resources.Load("Day" + currentDay) as TextAsset;
-       StringReader stringReader = new StringReader(textFile.text);
-
-       //#3. 한 줄씩 데이터 저장
-       while (stringReader != null)
-       {
-           string line = stringReader.ReadLine();
-           Debug.Log(line);
-
-           if (line == null)
-               break;
-
-           Spawn spawnData = new Spawn();
-           spawnData.delay = float.Parse(line.Split(',')[0]);
-           spawnData.type = line.Split(',')[1];
-           spawnData.point = int.Parse(line.Split(',')[2]);
-           spawnList.Add(spawnData);
-       }
-
-       stringReader.Close();
-
-       nextSpawnDelay = spawnList[0].delay;
-   }
-
-
-   void SpawnEnemy()
-   {
-       Debug.Log("-1활성화");
-       int enemyIndex = 0;
-
-       switch (spawnList[spawnIndex].type)
-       {
-           case "Samurai":
-               enemyIndex = 0;
-               break;
-           case "Bowel":
-               enemyIndex = 1;
-               break;
-           case "Skull":
-               enemyIndex = 2;
-               break;
-       }
-
-       int enemyPoint = spawnList[spawnIndex].point;
-       Debug.Log("0활성화");
-       // 오브젝트 풀링에서 적 오브젝트 가져오기
-       GameObject enemy = GetEnemyFromPool(enemyIndex);
-       enemy.transform.position = spawnPoints[enemyPoint].position;
-
-       Debug.Log("1활성화");
-       // 활성화
-       enemy.SetActive(true);
-       Debug.Log("2활성화완료");
-       Rigidbody rigid = enemy.GetComponent<Rigidbody>();
-
-       Enemy enemyLogic = enemy.GetComponent<Enemy>();
-       enemyLogic.player = player;
-       enemyLogic.gameManager = this;
-       enemyLogic.objectManager = objectManager;
-
-       // 적 이동 로직 유지
-
-       spawnIndex++;
-
-       if (spawnIndex == spawnList.Count)
-       {
-           spawnEnd = true;
-           return;
-       }
-
-       nextSpawnDelay = spawnList[spawnIndex].delay;
-   }*/
 }
 
