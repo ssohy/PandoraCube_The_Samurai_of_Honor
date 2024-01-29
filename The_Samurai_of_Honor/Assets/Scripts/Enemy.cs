@@ -29,13 +29,9 @@ public class Enemy : MonoBehaviour
     void Awake()
     {
         GameObject gameManagerObject = GameObject.Find("GameManager");
-       
-            gameManager = gameManagerObject.GetComponent<GameManager>();
+        gameManager = gameManagerObject.GetComponent<GameManager>();
         
-
         GameObject objectManagerObject = GameObject.Find("ObjectManager");
-
-
         objectManager = objectManagerObject.GetComponent<ObjectManager>();
 
         rigid = GetComponent<Rigidbody>();
