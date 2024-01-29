@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     public bool spawnEnd;
     public float nextSpawnDelay;
     public float curSpawnDelay;
-    public List<GameObject> enemyPool;
+    //public List<GameObject> enemyPool;
 
     void Awake()
     {
@@ -33,19 +33,21 @@ public class GameManager : MonoBehaviour
         enemyObjs = new string[] { "Samurai", "Bowel", "Skull" };
         dTime = 0;
         isDay = true;
-
-        //CreateEnemyPool();
         DayStart();
-        SpawnEnemy();
     }
 
     void Update()
     {
+        curSpawnDelay += Time.deltaTime;
+        if (curSpawnDelay > nextSpawnDelay && !spawnEnd)
+        {
+            SpawnEnemy();
+            curSpawnDelay = 0;
+        }
         IsDay();
     }
     public void DayStart()
     {
-
         //#.Enemy Spawn File 읽어오기
         ReadSpawnFile();
     }
@@ -140,30 +142,9 @@ public class GameManager : MonoBehaviour
 
         stringReader.Close();
 
-        //nextSpawnDelay = spawnList[0].delay;
+        nextSpawnDelay = spawnList[0].delay;
     }
-    /*
-    // 적 오브젝트 풀링 생성
-    GameObject CreateEnemyPool()
-    {
-        foreach (string enemyName in enemyObjs)
-        {
-            //Debug.Log("enemyName : " + enemyName);
-            GameObject enemyPrefab = objectManager.MakeObj(enemyName);
-            return enemyPrefab;
-            enemyPool.Add(enemyPrefab);
-        }
-        return null;
-    }
-
-    // 오브젝트 풀링에서 적 오브젝트 가져오기
-    GameObject GetEnemyFromPool(int index)
-    {
-        // 해당 인덱스의 적 오브젝트 가져오기
-        GameObject enemy = enemyPool[index];
-
-        return enemy;
-    }*/
+    
 
 
     void SpawnEnemy()
@@ -175,7 +156,6 @@ public class GameManager : MonoBehaviour
         }
 
         int enemyIndex = 0;
-        Debug.Log("0여기 실행됨?");
         switch (spawnList[spawnIndex].type)
         {
             case "Samurai":
@@ -191,28 +171,30 @@ public class GameManager : MonoBehaviour
         int enemyPoint = spawnList[spawnIndex].point;
         GameObject enemy = objectManager.MakeObj(enemyObjs[enemyIndex]);
         enemy.transform.position = spawnPoints[enemyPoint].position;
-        Debug.Log("enemyIndex : " + enemyIndex);
-        // 오브젝트 풀에서 적을 가져오기
-        Debug.Log("4여기 실행됨?");
+        // Debug.Log("enemyIndex : " + enemyIndex);
+        
         if (enemy != null)
         {
-            Debug.Log("3여기 실행됨?");
             enemy.transform.position = spawnPoints[enemyPoint].position;
             enemy.SetActive(true);
 
             Rigidbody rigid = enemy.GetComponent<Rigidbody>();
-
             Enemy enemyLogic = enemy.GetComponent<Enemy>();
             enemyLogic.player = player;
             enemyLogic.gameManager = this;
             enemyLogic.objectManager = objectManager;
 
+            rigid.velocity = new Vector3(0, enemyLogic.speed * (-1));
+
             spawnIndex++;
         }
-        else
+        if (spawnIndex == spawnList.Count)
         {
-            Debug.LogError("오브젝트 풀에서 적 오브젝트를 가져올 수 없음");
+            spawnEnd = true;
+            return;
         }
+
+        nextSpawnDelay = spawnList[spawnIndex].delay;
     }
 }
 
