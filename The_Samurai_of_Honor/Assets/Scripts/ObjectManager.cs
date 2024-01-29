@@ -4,49 +4,132 @@ using UnityEngine;
 
 public class ObjectManager : MonoBehaviour
 {
+    public GameManager gameManager;
     public GameObject bowelPrefab;
     public GameObject skullPrefab;
     public GameObject samuraiPrefab;
-
+    
 
     GameObject[] bowel;
     GameObject[] samurai;
     GameObject[] skull;
-
-
     GameObject[] targetPool;
+
+    bool IsDay;
+    int currentDay;
+    int samuraiCnt;
+    int bowelCnt;
+    int skullCnt;
+
+
+
+    void SpawnEnemyCount()
+    {
+            Debug.Log("여긴가?1");
+            IsDay = gameManager.GetComponent<GameManager>().isDay;
+            currentDay = gameManager.GetComponent<GameManager>().currentDay;
+            Debug.Log("Object current : " + currentDay);
+
+        if (IsDay)
+        {
+            switch (currentDay)
+            {
+                case 1:
+                    samuraiCnt = 40;
+                    bowelCnt = 0;
+                    skullCnt = 0;
+                    break;
+                case 2:
+                    samuraiCnt = 60;
+                    bowelCnt = 0;
+                    skullCnt = 0;
+                    break;
+                case 3:
+                    samuraiCnt = 30;
+                    bowelCnt = 20;
+                    skullCnt = 40;
+                    break;
+            }
+        }
+        else
+        {
+            switch (currentDay)
+            {
+                case 1:
+                    samuraiCnt = 0;
+                    bowelCnt = 20;
+                    skullCnt = 40;
+                    break;
+                case 2:
+                    samuraiCnt = 0;
+                    bowelCnt = 30;
+                    skullCnt = 50;
+                    break;
+                case 3:
+                    samuraiCnt = 30;
+                    bowelCnt = 30;
+                    skullCnt = 60;
+                    break;
+            }
+        }
+    }
+
 
     void Awake()
     {
-        bowel = new GameObject[70]; // 몇개?
-        samurai = new GameObject[70]; // 몇개?
-        skull = new GameObject[70]; // 몇개?
-
+        SpawnEnemyCount();
+        bowel = new GameObject[bowelCnt]; // 몇개?
+        samurai = new GameObject[samuraiCnt]; // 몇개?
+        skull = new GameObject[skullCnt]; // 몇개?
         Generate();
     }
 
+
+
     void Generate()
     {
-        //#1.Enemy
-        for (int index = 0; index < samurai.Length; index++)
+        if (samurai != null)
         {
-            samurai[index] = Instantiate(samuraiPrefab);
-            samurai[index].SetActive(false);
+            //#1.Enemy
+            for (int index = 0; index < samurai.Length; index++)
+            {
+                Debug.Log("사무라이 생성중" + index);
+                samurai[index] = Instantiate(samuraiPrefab);
+                samurai[index].SetActive(false);
+            }
+        }
+        else
+        {
+            Debug.LogError("samurai 배열이 null입니다.");
         }
 
-        for (int index = 0; index < bowel.Length; index++)
+        if (bowel != null)
         {
-            bowel[index] = Instantiate(bowelPrefab);
-            bowel[index].SetActive(false);
+            for (int index = 0; index < bowel.Length; index++)
+            {
+                bowel[index] = Instantiate(bowelPrefab);
+                bowel[index].SetActive(false);
+            }
         }
-        for (int index = 0; index < skull.Length; index++)
+        else
         {
-            skull[index] = Instantiate(skullPrefab);
-            skull[index].SetActive(false);
+            Debug.LogError("bowel 배열이 null입니다.");
+        }
 
+        if (skull != null)
+        {
+            for (int index = 0; index < skull.Length; index++)
+            {
+                skull[index] = Instantiate(skullPrefab);
+                skull[index].SetActive(false);
+            }
         }
-        
+        else
+        {
+            Debug.LogError("skull 배열이 null입니다.");
+        }
     }
+
     public GameObject MakeObj(string type)
     {
         switch (type)
@@ -66,29 +149,16 @@ public class ObjectManager : MonoBehaviour
         {
             if (!targetPool[index].activeSelf)
             {
+                
                 targetPool[index].SetActive(true);
+                Debug.Log("SetActive(true)");
                 return targetPool[index];
+                
             }
         }
 
         return null;
     }
 
-    public GameObject[] GetPool(string type)
-    {
-        switch (type)
-        {
-            case "Samurai":
-                targetPool = samurai;
-                break;
-            case "Bowel":
-                targetPool = bowel;
-                break;
-            case "Skull":
-                targetPool = skull;
-                break;
-        }
-
-        return targetPool;
-    }
+    
 }
