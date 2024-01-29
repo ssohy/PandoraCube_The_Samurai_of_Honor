@@ -48,7 +48,9 @@ public class Enemy : MonoBehaviour
     }*/
     void Update()
     {
+        Debug.Log("here?");
         nav.SetDestination(target.position);
+        Debug.Log("2here?");
         /*if (nav.enabled)
         {
             

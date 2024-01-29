@@ -13,7 +13,7 @@ public class ObjectManager : MonoBehaviour
     GameObject[] bowel;
     GameObject[] samurai;
     GameObject[] skull;
-    GameObject[] targetPool;
+    //GameObject[] targetPool;
 
     public bool isDay;
     public int currentDay;
@@ -90,14 +90,14 @@ public class ObjectManager : MonoBehaviour
             //#1.Enemy
             for (int index = 0; index < samurai.Length; index++)
             {
-                Debug.Log("사무라이 생성중" + index);
+                //Debug.Log("사무라이 생성중" + index);
                 samurai[index] = Instantiate(samuraiPrefab);
                 samurai[index].SetActive(false);
             }
         }
         else
         {
-            Debug.LogError("samurai 배열이 null입니다.");
+            Debug.LogError("samurai 배열이 null");
         }
 
         if (bowel != null)
@@ -110,7 +110,7 @@ public class ObjectManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("bowel 배열이 null입니다.");
+            Debug.LogError("bowel 배열이 null");
         }
 
         if (skull != null)
@@ -123,7 +123,7 @@ public class ObjectManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("skull 배열이 null입니다.");
+            Debug.LogError("skull 배열이 null");
         }
     }
 
@@ -144,11 +144,10 @@ public class ObjectManager : MonoBehaviour
 
     public GameObject ActiveObj(GameObject[] enemies)
     {
-        Debug.Log("type.Length : " + enemies.Length);
-        for (int i = 0; i < enemies.Length; i++)
+        for (int index = 0; index < enemies.Length; index++)
         {
-            enemies[i].SetActive(true);
-            return enemies[i];
+            enemies[index].SetActive(true);
+            return enemies[index];
         }
         return null;
     }
