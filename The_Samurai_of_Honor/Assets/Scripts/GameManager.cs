@@ -25,44 +25,21 @@ public class GameManager : MonoBehaviour
     public float curSpawnDelay;
     public List<GameObject> enemyPool;
 
-
-    IEnumerator Start()
+    void Awake()
     {
-        currentDay = 1;
+        currentDay = objectManager.GetComponent<ObjectManager>().currentDay;
+        isDay = objectManager.GetComponent<ObjectManager>().isDay;
+
+        Debug.Log("Game currentDay : " + currentDay);
+        Debug.Log("Game isDay : " + isDay);
         spawnList = new List<Spawn>();
         enemyObjs = new string[] { "Samurai", "Bowel", "Skull" };
         dTime = 0;
         isDay = true;
 
-        // GameManager 실행
-        yield return StartCoroutine(InitializeGameManager());
-
-        // ObjectManager 초기화
-        StartCoroutine(InitializeObjectManager());
+        CreateEnemyPool();
+        DayStart();
     }
-
-    IEnumerator InitializeGameManager()
-    {
-        // GameManager 초기화 작업 수행
-        Debug.Log("GameManager 초기화 작업 수행 중...");
-        yield return null; // 예시로, 별도의 초기화 작업이 없다면 한 프레임을 기다립니다.
-        Debug.Log("GameManager 초기화 완료!");
-    }
-
-    IEnumerator InitializeObjectManager()
-    {
-        // GameManager가 초기화된 후에 실행될 수 있도록 대기
-        yield return new WaitForEndOfFrame();
-
-        // ObjectManager 초기화 작업 수행
-        Debug.Log("ObjectManager 초기화 작업 수행 중...");
-
-        // 여기서 objectManager를 초기화하거나 다른 초기화 작업을 수행합니다.
-        objectManager.Init();
-
-        Debug.Log("ObjectManager 초기화 완료!");
-    }
-   
 
     void Update()
     {
@@ -78,7 +55,7 @@ public class GameManager : MonoBehaviour
     // Day별 낮, 밤 타이머 설정하기
     void IsDay()
     {
-        if(currentDay == 3)
+        if (currentDay == 3)
         {
             // 낮 15분, 밤 15분
             if (isDay)
@@ -100,7 +77,7 @@ public class GameManager : MonoBehaviour
                     //Debug.Log("15분 경과");
                     dTime = 0;
                     #if UNITY_EDITOR
-                         UnityEditor.EditorApplication.isPlaying = false;
+                          UnityEditor.EditorApplication.isPlaying = false;
                     #else
                          Application.Quit();
                     #endif
@@ -132,14 +109,14 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        
+
 
     }
 
     // 적 오브젝트 풀링 생성
     void CreateEnemyPool()
     {
-        
+
         foreach (string enemyName in enemyObjs)
         {
             Debug.Log("enemyName : " + enemyName);
