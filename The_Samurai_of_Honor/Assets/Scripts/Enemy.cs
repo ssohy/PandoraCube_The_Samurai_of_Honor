@@ -34,6 +34,9 @@ public class Enemy : MonoBehaviour
         GameObject objectManagerObject = GameObject.Find("ObjectManager");
         objectManager = objectManagerObject.GetComponent<ObjectManager>();
 
+        player = GameObject.Find("Player");
+        target = player.GetComponent<Transform>();
+
         rigid = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
         capsuleCollider = GetComponent<CapsuleCollider>();
@@ -48,9 +51,7 @@ public class Enemy : MonoBehaviour
     }*/
     void Update()
     {
-        Debug.Log("here?");
         nav.SetDestination(target.position);
-        Debug.Log("2here?");
         /*if (nav.enabled)
         {
             

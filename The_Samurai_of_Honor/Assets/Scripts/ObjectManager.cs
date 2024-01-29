@@ -13,15 +13,13 @@ public class ObjectManager : MonoBehaviour
     GameObject[] bowel;
     GameObject[] samurai;
     GameObject[] skull;
-    //GameObject[] targetPool;
+    GameObject[] targetPool;
 
     public bool isDay;
     public int currentDay;
     int samuraiCnt;
     int bowelCnt;
     int skullCnt;
-
-
 
     void SpawnEnemyCount()
     {
@@ -87,10 +85,9 @@ public class ObjectManager : MonoBehaviour
     {
         if (samurai != null)
         {
-            //#1.Enemy
             for (int index = 0; index < samurai.Length; index++)
             {
-                //Debug.Log("사무라이 생성중" + index);
+                //Debug.Log("사무라이 생성중 " + index);
                 samurai[index] = Instantiate(samuraiPrefab);
                 samurai[index].SetActive(false);
             }
@@ -132,23 +129,27 @@ public class ObjectManager : MonoBehaviour
         switch (type)
         {
             case "Samurai":
-                return ActiveObj(samurai);
+                targetPool = samurai;
+                break;
             case "Bowel":
-                return ActiveObj(bowel);
+                targetPool = bowel;
+                break;
             case "Skull":
-                return ActiveObj(skull);
+                targetPool = skull;
+                break;
         }
 
-        return null;
-    }
-
-    public GameObject ActiveObj(GameObject[] enemies)
-    {
-        for (int index = 0; index < enemies.Length; index++)
+        for (int index = 0; index < targetPool.Length; index++)
         {
-            enemies[index].SetActive(true);
-            return enemies[index];
+            if (!targetPool[index].activeSelf)
+            {
+                Debug.Log("index : " + index);
+                targetPool[index].SetActive(true);
+                return targetPool[index];
+            }
         }
         return null;
     }
+
+    
 }

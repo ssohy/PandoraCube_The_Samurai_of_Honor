@@ -650,7 +650,7 @@ MonoBehaviour:
   gameManager: {fileID: 1381164216}
   bowelPrefab: {fileID: 6178305393742208914, guid: bdd0d8638c0082b4b9defb6021df592f, type: 3}
   skullPrefab: {fileID: 9151311434858621346, guid: dd9b6c9341cba7d4c8e489620e9de9ca, type: 3}
-  samuraiPrefab: {fileID: 9111823517972558857, guid: d9eb5380a93d7244985f42acfd5b7ee7, type: 3}
+  samuraiPrefab: {fileID: 6915639417805807451, guid: d9eb5380a93d7244985f42acfd5b7ee7, type: 3}
   isDay: 0
   currentDay: 0
 --- !u!4 &1067675085
@@ -702,7 +702,16 @@ MonoBehaviour:
   currentDay: 0
   dTime: 0
   isDay: 0
-  spawnPoints: []
+  spawnPoints:
+  - {fileID: 890860572}
+  - {fileID: 923780595}
+  - {fileID: 460186017}
+  - {fileID: 248538105}
+  - {fileID: 2106808090}
+  - {fileID: 265967395}
+  - {fileID: 242898421}
+  - {fileID: 745707110}
+  - {fileID: 1673520599}
   spawnIndex: 0
   spawnEnd: 0
   nextSpawnDelay: 0

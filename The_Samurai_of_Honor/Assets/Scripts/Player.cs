@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     void Awake()
     {
         player = GameObject.Find("Player");
-        hp = 100;
+        hp = 1000;
     }
 
     void Update()
