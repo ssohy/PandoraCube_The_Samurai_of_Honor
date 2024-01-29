@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
 
     Rigidbody rigid;
 
+    bool isDamage;
+
     void Awake()
     {
         player = GameObject.Find("Player");
@@ -65,6 +67,25 @@ public class Player : MonoBehaviour
             //anim.SetTrigger("doSwing");
             AttackDelay = 0;
         }
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Enemy")
+        {
+            if (!isDamage)
+            {
+                Enemy enemy = other.GetComponent<Enemy>();
+                hp -= enemy.attackDamage;
+                StartCoroutine(OnDamage());
+            }
+            Debug.Log("플레이어 체력 : " + hp);
+        }
+    }
+    IEnumerator OnDamage()
+    {
+        isDamage = true;
+        yield return new WaitForSeconds(1f);
+        isDamage = false;
     }
     /*
     void FreezeRotation()
