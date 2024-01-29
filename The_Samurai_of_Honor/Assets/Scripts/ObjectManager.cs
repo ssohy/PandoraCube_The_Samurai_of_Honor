@@ -8,7 +8,7 @@ public class ObjectManager : MonoBehaviour
     public GameObject bowelPrefab;
     public GameObject skullPrefab;
     public GameObject samuraiPrefab;
-    
+
 
     GameObject[] bowel;
     GameObject[] samurai;
@@ -21,14 +21,28 @@ public class ObjectManager : MonoBehaviour
     int bowelCnt;
     int skullCnt;
 
+    IEnumerator Start()
+    {
+        // GameManager가 초기화될 때까지 대기
+        yield return new WaitForEndOfFrame();
 
+        // ObjectManager 초기화
+        Init();
+    }
+
+    public void Init()
+    {
+        SpawnEnemyCount();
+        bowel = new GameObject[bowelCnt]; // 몇개?
+        samurai = new GameObject[samuraiCnt]; // 몇개?
+        skull = new GameObject[skullCnt]; // 몇개?
+        Generate();
+    }
 
     void SpawnEnemyCount()
     {
-            Debug.Log("여긴가?1");
-            IsDay = gameManager.GetComponent<GameManager>().isDay;
-            currentDay = gameManager.GetComponent<GameManager>().currentDay;
-            Debug.Log("Object current : " + currentDay);
+        IsDay = gameManager.isDay;
+        currentDay = gameManager.currentDay;
 
         if (IsDay)
         {
@@ -74,15 +88,6 @@ public class ObjectManager : MonoBehaviour
         }
     }
 
-
-    void Awake()
-    {
-        SpawnEnemyCount();
-        bowel = new GameObject[bowelCnt]; // 몇개?
-        samurai = new GameObject[samuraiCnt]; // 몇개?
-        skull = new GameObject[skullCnt]; // 몇개?
-        Generate();
-    }
 
 
 
@@ -135,30 +140,30 @@ public class ObjectManager : MonoBehaviour
         switch (type)
         {
             case "Samurai":
-                targetPool = samurai;
-                break;
+                return ActiveObj(samurai);
             case "Bowel":
-                targetPool = bowel;
-                break;
+                return ActiveObj(bowel);
             case "Skull":
-                targetPool = skull;
-                break;
-        }
-
-        for (int index = 0; index < targetPool.Length; index++)
-        {
-            if (!targetPool[index].activeSelf)
-            {
-                
-                targetPool[index].SetActive(true);
-                Debug.Log("SetActive(true)");
-                return targetPool[index];
-                
-            }
+                return ActiveObj(skull);
         }
 
         return null;
     }
 
-    
+    public GameObject ActiveObj(GameObject[] enemies)
+    {
+        Debug.Log("type.Length : " + enemies.Length);
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            Debug.Log("여기니?");
+            if (!enemies[i].activeSelf)
+            {
+                Debug.Log("아님 여기?");
+                enemies[i].SetActive(true);
+                Debug.Log("SetActive(true)");
+                return enemies[i];
+            }
+        }
+        return null;
+    }
 }

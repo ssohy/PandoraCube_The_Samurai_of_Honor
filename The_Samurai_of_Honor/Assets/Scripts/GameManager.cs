@@ -24,19 +24,45 @@ public class GameManager : MonoBehaviour
     public float nextSpawnDelay;
     public float curSpawnDelay;
     public List<GameObject> enemyPool;
-    
-    void Awake()
+
+
+    IEnumerator Start()
     {
         currentDay = 1;
         spawnList = new List<Spawn>();
-        enemyObjs = new string[] { "Samurai", "Bowel", "Skull"};
-        Debug.Log("Game current : " + currentDay);
+        enemyObjs = new string[] { "Samurai", "Bowel", "Skull" };
         dTime = 0;
         isDay = true;
 
-        CreateEnemyPool();
-        DayStart();
+        // GameManager 실행
+        yield return StartCoroutine(InitializeGameManager());
+
+        // ObjectManager 초기화
+        StartCoroutine(InitializeObjectManager());
     }
+
+    IEnumerator InitializeGameManager()
+    {
+        // GameManager 초기화 작업 수행
+        Debug.Log("GameManager 초기화 작업 수행 중...");
+        yield return null; // 예시로, 별도의 초기화 작업이 없다면 한 프레임을 기다립니다.
+        Debug.Log("GameManager 초기화 완료!");
+    }
+
+    IEnumerator InitializeObjectManager()
+    {
+        // GameManager가 초기화된 후에 실행될 수 있도록 대기
+        yield return new WaitForEndOfFrame();
+
+        // ObjectManager 초기화 작업 수행
+        Debug.Log("ObjectManager 초기화 작업 수행 중...");
+
+        // 여기서 objectManager를 초기화하거나 다른 초기화 작업을 수행합니다.
+        objectManager.Init();
+
+        Debug.Log("ObjectManager 초기화 완료!");
+    }
+   
 
     void Update()
     {
@@ -116,7 +142,7 @@ public class GameManager : MonoBehaviour
         
         foreach (string enemyName in enemyObjs)
         {
-            
+            Debug.Log("enemyName : " + enemyName);
             GameObject enemyPrefab = objectManager.MakeObj(enemyName);
             //enemyPrefab.SetActive(false);
             enemyPool.Add(enemyPrefab);
@@ -126,8 +152,6 @@ public class GameManager : MonoBehaviour
     // 오브젝트 풀링에서 적 오브젝트 가져오기
     GameObject GetEnemyFromPool(int index)
     {
-       
-
         // 해당 인덱스의 적 오브젝트 가져오기
         GameObject enemy = enemyPool[index];
         return enemy;
