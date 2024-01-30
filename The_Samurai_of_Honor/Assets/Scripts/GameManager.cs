@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     public bool spawnEnd;
     public float nextSpawnDelay;
     public float curSpawnDelay;
-    //public List<GameObject> enemyPool;
+    public int enemyCnt;
 
     void Awake()
     {
@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
         enemyObjs = new string[] { "Samurai", "Bowel", "Skull" };
         dTime = 0;
         isDay = true;
+        enemyCnt = 0;
         DayStart();
     }
 
@@ -195,6 +196,26 @@ public class GameManager : MonoBehaviour
         }
 
         nextSpawnDelay = spawnList[spawnIndex].delay;
+    }
+
+    void MaskClear()
+    {
+        if(enemyCnt >= 10)
+        {
+
+        }
+        else if(enemyCnt >= 20)
+        {
+            
+        }
+        else if(enemyCnt >= 30)
+        {
+
+        }
+        else if(enemyCnt >= 40)
+        {
+
+        }
     }
 }
 

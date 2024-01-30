@@ -26,13 +26,14 @@ public class Player : MonoBehaviour
     void Awake()
     {
         player = GameObject.Find("Player");
-        hp = 1000;
+        hp = 1;
     }
 
     void Update()
     {
         Move();
         Attack();
+        gameOver();
     }
 
     //#.이동(ui추가할 때 버튼으로 수정할 예정)
@@ -97,4 +98,16 @@ public class Player : MonoBehaviour
     {
         FreezeRotation();
     }*/
+
+    void gameOver()
+    {
+        if(hp <= 0)
+        {
+            #if UNITY_EDITOR
+                        UnityEditor.EditorApplication.isPlaying = false;
+            #else
+                            Application.Quit();
+            #endif
+        }
+    }
 }
