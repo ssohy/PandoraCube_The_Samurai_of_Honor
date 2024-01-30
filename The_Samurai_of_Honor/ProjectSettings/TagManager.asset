@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Melee
   - Enemy
+  - Midway
+  - End
   layers:
   - Default
   - TransparentFX

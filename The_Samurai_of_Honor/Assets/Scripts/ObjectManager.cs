@@ -23,47 +23,24 @@ public class ObjectManager : MonoBehaviour
 
     void SpawnEnemyCount()
     {
-        if (isDay)
+
+        switch (currentDay)
         {
-            switch (currentDay)
-            {
-                case 1:
-                    samuraiCnt = 40;
-                    bowelCnt = 0;
-                    skullCnt = 0;
-                    break;
-                case 2:
-                    samuraiCnt = 60;
-                    bowelCnt = 0;
-                    skullCnt = 0;
-                    break;
-                case 3:
-                    samuraiCnt = 30;
-                    bowelCnt = 20;
-                    skullCnt = 40;
-                    break;
-            }
-        }
-        else
-        {
-            switch (currentDay)
-            {
-                case 1:
-                    samuraiCnt = 0;
-                    bowelCnt = 20;
-                    skullCnt = 40;
-                    break;
-                case 2:
-                    samuraiCnt = 0;
-                    bowelCnt = 30;
-                    skullCnt = 50;
-                    break;
-                case 3:
-                    samuraiCnt = 30;
-                    bowelCnt = 30;
-                    skullCnt = 60;
-                    break;
-            }
+            case 1:
+                samuraiCnt = 40;
+                bowelCnt = 20;
+                skullCnt = 40;
+                break;
+            case 2:
+                samuraiCnt = 60;
+                bowelCnt = 30;
+                skullCnt = 50;
+                break;
+            case 3:
+                samuraiCnt = 60;
+                bowelCnt = 50;
+                skullCnt = 100;
+                break;
         }
     }
 
