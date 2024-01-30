@@ -25,6 +25,8 @@ public class Enemy : MonoBehaviour
 
     public Transform target;
     bool isChase;
+
+    int enemyCnt;
     //Animator anim;
     void Awake()
     {
@@ -42,6 +44,7 @@ public class Enemy : MonoBehaviour
         capsuleCollider = GetComponent<CapsuleCollider>();
         //mat = GetComponent<MeshRenderer>().material;
         nav = GetComponent<NavMeshAgent>();
+        enemyCnt = gameManager.enemyCnt;
     }
 
     /*void ChaseStart()
@@ -92,6 +95,7 @@ public class Enemy : MonoBehaviour
         {
             //mat.color = Color.gray;
             Destroy(gameObject, 4);
+            enemyCnt++;
         }
     }
 
