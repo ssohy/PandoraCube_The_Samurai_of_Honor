@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    public GameManager gameManager;
     public GameObject player;
     public int hp;
-
+    GameObject gameManagerObject;
+    public Transform[] spawnMidwayEndPoint;
     // (이동 변수)
     float h, v;
     Vector3 moveV;
@@ -23,10 +26,23 @@ public class Player : MonoBehaviour
 
     bool isDamage;
 
+    bool isDay;
+    int currentDay;
+    string nextScene;
+    //GameObject Day1;
+    //GameObject Day2;
+   // GameObject Day3;
     void Awake()
     {
+        gameManagerObject = GameObject.Find("GameManager");
+        gameManager = gameManagerObject.GetComponent<GameManager>();
+
+
         player = GameObject.Find("Player");
-        hp = 1;
+        hp = 100;
+
+        isDay = gameManager.isDay;
+        currentDay = gameManager.currentDay;
     }
 
     void Update()
@@ -81,6 +97,28 @@ public class Player : MonoBehaviour
             }
             Debug.Log("플레이어 체력 : " + hp);
         }
+
+        if(other.tag == "Midway")
+        {
+            isDay = false;
+            Debug.Log("isDay : " + isDay);
+        }
+
+        if(other.tag  == "End")
+        {
+            if (currentDay == 3)
+                gameOver();
+            else
+            {
+                currentDay++;
+                isDay = true;
+                // 씬 전환
+                nextScene = "Day" + currentDay.ToString();
+                SceneManager.LoadScene(nextScene);
+                player.transform.position = spawnMidwayEndPoint[0].position;
+
+            }
+        }
     }
     IEnumerator OnDamage()
     {
@@ -99,14 +137,15 @@ public class Player : MonoBehaviour
         FreezeRotation();
     }*/
 
+
     void gameOver()
     {
-        if(hp <= 0)
+        if (hp <= 0)
         {
             #if UNITY_EDITOR
-                        UnityEditor.EditorApplication.isPlaying = false;
+                 UnityEditor.EditorApplication.isPlaying = false;
             #else
-                            Application.Quit();
+                  Application.Quit();
             #endif
         }
     }

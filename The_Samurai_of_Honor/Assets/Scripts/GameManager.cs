@@ -9,9 +9,10 @@ public class GameManager : MonoBehaviour
 {
     public GameObject player;
 
+    public Transform[] spawnMidwayEndPoint;
     public string[] enemyObjs;
     public ObjectManager objectManager;
-
+    public GameObject diary;
 
     public int currentDay;
     public float dTime;
@@ -24,9 +25,12 @@ public class GameManager : MonoBehaviour
     public float nextSpawnDelay;
     public float curSpawnDelay;
     public int enemyCnt;
-
+    public int playerHp;
     void Awake()
     {
+        //Debug.Log("시작 위치 : " + spawnMidwayEndPoint[0].position);
+        //player.transform.position = spawnMidwayEndPoint[0].position;
+
         currentDay = objectManager.GetComponent<ObjectManager>().currentDay;
         isDay = objectManager.GetComponent<ObjectManager>().isDay;
         spawnList = new List<Spawn>();
@@ -45,74 +49,16 @@ public class GameManager : MonoBehaviour
             SpawnEnemy();
             curSpawnDelay = 0;
         }
-        IsDay();
+        //IsDay();
     }
     public void DayStart()
     {
         //#.Enemy Spawn File 읽어오기
         ReadSpawnFile();
-    }
-
-    // Day별 낮, 밤 타이머 설정하기
-    void IsDay()
-    {
-        if (currentDay == 3)
-        {
-            // 낮 15분, 밤 15분
-            if (isDay)
-            {
-                dTime += Time.deltaTime;
-
-                if (dTime >= 900f)
-                {
-                    //Debug.Log("15분 경과");
-                    dTime = 0;
-                    isDay = false;
-                }
-            }
-            else
-            {
-                dTime += Time.deltaTime;
-                if (dTime >= 900f)
-                {
-                    //Debug.Log("15분 경과");
-                    dTime = 0;
-                    #if UNITY_EDITOR
-                          UnityEditor.EditorApplication.isPlaying = false;
-                    #else
-                         Application.Quit();
-                    #endif
-                }
-            }
-        }
-        else
-        {
-            // 낮 10분, 밤 15분
-            if (isDay)
-            {
-                dTime += Time.deltaTime;
-                if (dTime >= 600f)
-                {
-                    //Debug.Log("10분 경과");
-                    dTime = 0;
-                    isDay = false;
-                }
-            }
-            else
-            {
-                dTime += Time.deltaTime;
-                if (dTime >= 900f)
-                {
-                    //Debug.Log("15분 경과");
-                    dTime = 0;
-                    isDay = true;
-                    currentDay++;
-                }
-            }
-        }
-
+        diary = GameObject.Find("Diary");
 
     }
+
     // 적 스폰 파일
     void ReadSpawnFile()
     {
@@ -217,5 +163,66 @@ public class GameManager : MonoBehaviour
 
         }
     }
+
+    /*
+    // Day별 낮, 밤 타이머 설정하기
+    void IsDay()
+    {
+        if (currentDay == 3)
+        {
+            // 낮 15분, 밤 15분
+            if (isDay)
+            {
+                dTime += Time.deltaTime;
+
+                if (dTime >= 900f)
+                {
+                    //Debug.Log("15분 경과");
+                    dTime = 0;
+                    isDay = false;
+                }
+            }
+            else
+            {
+                dTime += Time.deltaTime;
+                if (dTime >= 900f)
+                {
+                    //Debug.Log("15분 경과");
+                    dTime = 0;
+                    #if UNITY_EDITOR
+                          UnityEditor.EditorApplication.isPlaying = false;
+                    #else
+                         Application.Quit();
+                    #endif
+                }
+            }
+        }
+        else
+        {
+            // 낮 10분, 밤 15분
+            if (isDay)
+            {
+                dTime += Time.deltaTime;
+                if (dTime >= 600f)
+                {
+                    //Debug.Log("10분 경과");
+                    dTime = 0;
+                    isDay = false;
+                }
+            }
+            else
+            {
+                dTime += Time.deltaTime;
+                if (dTime >= 900f)
+                {
+                    //Debug.Log("15분 경과");
+                    dTime = 0;
+                    isDay = true;
+                    currentDay++;
+                }
+            }
+        }
+    }*/
+    
 }
 
