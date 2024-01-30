@@ -1,2 +1,6 @@
 # Auto detect text files and perform LF normalization
 * text=auto eol=lf
+.fbx filter=lfs diff=lfs merge=lfs -text
+Map_temp2.fbx filter=lfs diff=lfs merge=lfs -text
+89aff469a7d770f363180788fe5184a8 filter=lfs diff=lfs merge=lfs -text
+The_Samurai_of_Honor/Library/Artifacts/89/893cf62aec04efce59e2e78f973fa268 filter=lfs diff=lfs merge=lfs -text
