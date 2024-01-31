@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Midway
   - End
+  - Diary
   layers:
   - Default
   - TransparentFX
