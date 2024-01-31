@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         //Debug.Log("시작 위치 : " + spawnMidwayEndPoint[0].position);
-        //player.transform.position = spawnMidwayEndPoint[0].position;
+        player.transform.position = spawnMidwayEndPoint[0].position;
 
         currentDay = objectManager.GetComponent<ObjectManager>().currentDay;
         isDay = objectManager.GetComponent<ObjectManager>().isDay;
@@ -146,19 +146,15 @@ public class GameManager : MonoBehaviour
 
     void MaskClear()
     {
-        if(enemyCnt >= 10)
+        if(enemyCnt >= 550)
         {
 
         }
-        else if(enemyCnt >= 20)
+        else if(enemyCnt >= 450)
         {
             
         }
-        else if(enemyCnt >= 30)
-        {
-
-        }
-        else if(enemyCnt >= 40)
+        else if(enemyCnt >= 350)
         {
 
         }
