@@ -15,4 +15,13 @@ public class Diary : MonoBehaviour
     {
         
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Diary")
+        {
+            //애니메이션
+            //UI
+        }
+    }
 }
