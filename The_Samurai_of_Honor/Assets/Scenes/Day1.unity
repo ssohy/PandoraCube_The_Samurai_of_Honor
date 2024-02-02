@@ -2521,7 +2521,7 @@ GameObject:
   - component: {fileID: 1795890473}
   m_Layer: 0
   m_Name: Diary
-  m_TagString: Untagged
+  m_TagString: Diary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43888,7 +43888,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3607429727634223131}
   m_LocalRotation: {x: 0.06694049, y: -0.12782542, z: -0.5071818, w: 0.8496742}
-  m_LocalPosition: {x: -2.1672702, y: 3.7329586, z: -40.4818}
+  m_LocalPosition: {x: -2.39, y: 2.73, z: -37.75}
   m_LocalScale: {x: 73.54891, y: 73.54893, z: 73.54891}
   m_Children: []
   m_Father: {fileID: 574310070}
