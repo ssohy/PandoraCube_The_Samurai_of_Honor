@@ -9,6 +9,7 @@ TagManager:
   - Midway
   - End
   - Diary
+  - Energy
   layers:
   - Default
   - TransparentFX
