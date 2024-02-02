@@ -3139,7 +3139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 352e12a0f4d477441bfeae2969cfbf9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 552210213}
   spawnMidwayEndPoint:
   - {fileID: 2081225070}
   - {fileID: 260186418}
