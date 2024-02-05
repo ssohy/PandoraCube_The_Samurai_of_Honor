@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     float AttackDelay;
     bool isAttackReady;
     public Sword sword;
-    // Animator anim;
+    
 
     Rigidbody rigid;
 
@@ -29,9 +29,9 @@ public class Player : MonoBehaviour
     bool isDay;
     int currentDay;
     string nextScene;
-    //GameObject Day1;
-    //GameObject Day2;
-   // GameObject Day3;
+
+    Animator anim;
+
     void Awake()
     {
         gameManagerObject = GameObject.Find("GameManager");
@@ -43,6 +43,8 @@ public class Player : MonoBehaviour
 
         isDay = gameManager.isDay;
         currentDay = gameManager.currentDay;
+
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -61,6 +63,7 @@ public class Player : MonoBehaviour
         moveV = new Vector3(h, 0, v).normalized;
 
         transform.position += moveV * moveSpeed * Time.deltaTime;
+        anim.SetBool("isWalk", moveV != Vector3.zero);
     }
 
     //#.공격
@@ -75,6 +78,8 @@ public class Player : MonoBehaviour
             sword.StartSwing();
             //anim.SetTrigger("doSwing");
             AttackDelay = 0;
+            anim.SetTrigger("doAttack");
+
         }
 
         if (Input.GetMouseButtonDown(1) && isAttackReady) // 더블 공격
@@ -83,7 +88,11 @@ public class Player : MonoBehaviour
             sword.StartDoubleSwing();
             //anim.SetTrigger("doSwing");
             AttackDelay = 0;
+            anim.SetTrigger("doDoubleAttack");
+           
         }
+
+        
     }
     void OnTriggerEnter(Collider other)
     {
