@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour
     bool isChase;
 
     int enemyCnt;
-    //Animator anim;
+    Animator anim;
     void Awake()
     {
         GameObject gameManagerObject = GameObject.Find("GameManager");
@@ -35,10 +35,9 @@ public class Enemy : MonoBehaviour
         
         GameObject objectManagerObject = GameObject.Find("ObjectManager");
         objectManager = objectManagerObject.GetComponent<ObjectManager>();
-
         player = GameObject.Find("Player");
-        target = player.GetComponent<Transform>();
 
+        target = player.GetComponent<Transform>();
 
         rigid = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
@@ -46,6 +45,7 @@ public class Enemy : MonoBehaviour
         //mat = GetComponent<MeshRenderer>().material;
         nav = GetComponent<NavMeshAgent>();
         enemyCnt = gameManager.enemyCnt;
+        anim = GetComponent<Animator>();
     }
 
     /*void ChaseStart()
@@ -55,25 +55,19 @@ public class Enemy : MonoBehaviour
     }*/
     void Update()
     {
+        float distance = Vector3.Distance(transform.position, target.position);
 
-        nav.SetDestination(target.position);
-        /*if (nav.enabled)
+        if (distance < 50f) 
         {
-            
-            //nav.isStopped = !isChase;
-        }*/
+            Walk();
+        }
+        if(distance < 30f)
+        {
+            Attack();
+        }
     }
 
-    void FreezeVelocity()
-    {
-        rigid.velocity = Vector3.zero;
-        rigid.angularVelocity = Vector3.zero;
-    }
 
-    void FixedUpdate()
-    {
-        FreezeVelocity();
-    }
     void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Melee")
@@ -100,8 +94,16 @@ public class Enemy : MonoBehaviour
             enemyCnt++;
         }
     }
-
-
+    void Walk()
+    {
+        nav.SetDestination(target.position);
+        //anim.SetBool("isWalk", true);
+    }
+    void Attack()
+    {
+        
+        anim.SetTrigger("doAttack");
+    }
     void OnEnable()
     {
         currentDay = gameManager.currentDay;
@@ -200,5 +202,17 @@ public class Enemy : MonoBehaviour
                 }
                 break;
         }
+    }
+
+
+    void FreezeVelocity()
+    {
+        rigid.velocity = Vector3.zero;
+        rigid.angularVelocity = Vector3.zero;
+    }
+
+    void FixedUpdate()
+    {
+        FreezeVelocity();
     }
 }

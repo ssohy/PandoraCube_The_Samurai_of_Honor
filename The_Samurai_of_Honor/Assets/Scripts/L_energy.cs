@@ -38,6 +38,7 @@ public class L_energy : MonoBehaviour
     void NightStart()
     {
         energyTime = energyCnt * 60;
+        // 밝기 애니메이션 UI설정
     }
 
 
