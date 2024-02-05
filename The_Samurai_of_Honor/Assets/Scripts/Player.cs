@@ -63,7 +63,15 @@ public class Player : MonoBehaviour
         moveV = new Vector3(h, 0, v).normalized;
 
         transform.position += moveV * moveSpeed * Time.deltaTime;
-        anim.SetBool("isWalk", moveV != Vector3.zero);
+        //anim.SetBool("isWalk", moveV != transform.position);
+        if (moveV.magnitude > 0)
+        {
+            anim.SetBool("isWalk", true); // 이동 애니메이션 활성화
+        }
+        else
+        {
+            anim.SetBool("isWalk", false); // 이동 애니메이션 비활성화
+        }
     }
 
     //#.공격
