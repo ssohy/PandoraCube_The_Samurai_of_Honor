@@ -118,11 +118,11 @@ public class GameManager : MonoBehaviour
         int enemyPoint = spawnList[spawnIndex].point;
         GameObject enemy = objectManager.MakeObj(enemyObjs[enemyIndex]);
         enemy.transform.position = spawnPoints[enemyPoint].position;
-        // Debug.Log("enemyIndex : " + enemyIndex);
-        
+        Debug.Log("À§Ä¡ : " + enemy.transform.position);
+
         if (enemy != null)
         {
-            enemy.transform.position = spawnPoints[enemyPoint].position;
+            //enemy.transform.position = spawnPoints[enemyPoint].position;
             enemy.SetActive(true);
 
             Rigidbody rigid = enemy.GetComponent<Rigidbody>();

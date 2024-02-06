@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6178305393742208918}
   - component: {fileID: 6178305393742208917}
   - component: {fileID: 6178305393742208916}
-  - component: {fileID: 6178305393742208915}
+  - component: {fileID: 8581454861541791710}
   m_Layer: 0
   m_Name: Bowel
   m_TagString: Enemy
@@ -89,7 +89,7 @@ MonoBehaviour:
   isDay: 0
   currentDay: 0
   target: {fileID: 0}
---- !u!195 &6178305393742208915
+--- !u!195 &8581454861541791710
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
