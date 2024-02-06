@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
     }
 
     // 적 스폰 파일
-    void ReadSpawnFile()
+    public void ReadSpawnFile()
     {
         //#1.변수 초기화
         spawnList.Clear();
