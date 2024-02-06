@@ -133,7 +133,8 @@ public class Player : MonoBehaviour
                 nextScene = "Day" + currentDay.ToString();
                 SceneManager.LoadScene(nextScene);
                 player.transform.position = spawnMidwayEndPoint[0].position;
-
+                if (currentDay <= 3)
+                    gameManager.ReadSpawnFile();
             }
         }
     }
