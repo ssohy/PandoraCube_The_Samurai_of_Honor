@@ -66,7 +66,16 @@ public class Enemy : MonoBehaviour
             Attack();
         }
     }
+    void FreezeVelocity()
+    {
+        rigid.velocity = Vector3.zero;
+        rigid.angularVelocity = Vector3.zero;
+    }
 
+    void FixedUpdate()
+    {
+        FreezeVelocity();
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -205,14 +214,5 @@ public class Enemy : MonoBehaviour
     }
 
 
-    void FreezeVelocity()
-    {
-        rigid.velocity = Vector3.zero;
-        rigid.angularVelocity = Vector3.zero;
-    }
 
-    void FixedUpdate()
-    {
-        FreezeVelocity();
-    }
 }

@@ -13,7 +13,8 @@ public class Player : MonoBehaviour
     // (이동 변수)
     float h, v;
     Vector3 moveV;
-    public float moveSpeed; 
+    public float moveSpeed;
+    public float rotateSpeed = 10.0f;
 
     // (공격 변수)
     bool AttackDown;
@@ -57,21 +58,30 @@ public class Player : MonoBehaviour
     //#.이동(ui추가할 때 버튼으로 수정할 예정)
     void Move() // 현재는 편의성을 위해 WASD로 이동중
     {
+        h = Input.GetAxis("Horizontal");
+        v = Input.GetAxis("Vertical");
+
+        Vector3 moveV = new Vector3(h, 0, v).normalized;
+        if (!(h == 0 && v == 0))
+        {
+            transform.position += moveV * moveSpeed * Time.deltaTime;
+            anim.SetBool("isWalk", true); // 이동 애니메이션 활성화
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(moveV), Time.deltaTime * rotateSpeed);
+            
+        }
+        else
+        {
+            anim.SetBool("isWalk", false); // 이동 애니메이션 비활성화
+        }
+        /*
         h = Input.GetAxisRaw("Horizontal");
         v = Input.GetAxisRaw("Vertical");
 
         moveV = new Vector3(h, 0, v).normalized;
 
         transform.position += moveV * moveSpeed * Time.deltaTime;
-        //anim.SetBool("isWalk", moveV != transform.position);
-        if (moveV.magnitude > 0)
-        {
-            anim.SetBool("isWalk", true); // 이동 애니메이션 활성화
-        }
-        else
-        {
-            anim.SetBool("isWalk", false); // 이동 애니메이션 비활성화
-        }
+        //anim.SetBool("isWalk", moveV != transform.position);*/
+        //if (moveV.magnitude > 0)
     }
 
     //#.공격

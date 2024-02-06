@@ -120,7 +120,6 @@ public class ObjectManager : MonoBehaviour
         {
             if (!targetPool[index].activeSelf)
             {
-                Debug.Log("index : " + index);
                 targetPool[index].SetActive(true);
                 return targetPool[index];
             }
