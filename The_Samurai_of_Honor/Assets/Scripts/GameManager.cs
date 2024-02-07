@@ -124,14 +124,14 @@ public class GameManager : MonoBehaviour
         {
             //enemy.transform.position = spawnPoints[enemyPoint].position;
             enemy.SetActive(true);
-
+            /*
             Rigidbody rigid = enemy.GetComponent<Rigidbody>();
             Enemy enemyLogic = enemy.GetComponent<Enemy>();
             enemyLogic.player = player;
             enemyLogic.gameManager = this;
             enemyLogic.objectManager = objectManager;
 
-            rigid.velocity = new Vector3(0, enemyLogic.speed * (-1));
+            rigid.velocity = new Vector3(0, enemyLogic.speed * (-1));*/
 
             spawnIndex++;
         }
