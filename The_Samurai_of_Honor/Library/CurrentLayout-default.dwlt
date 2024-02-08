@@ -43,8 +43,8 @@ MonoBehaviour:
     y: 0
     width: 402.6667
     height: 628
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 102, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_MinSize: {x: 333, y: 271}
   m_MaxSize: {x: 14003, y: 10021}
   vertical: 0
-  controlID: 153
+  controlID: 154
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -196,8 +196,8 @@ MonoBehaviour:
     y: 30
     width: 1692
     height: 911.3333
-  m_MinSize: {x: 678, y: 492}
-  m_MaxSize: {x: 18003, y: 14042}
+  m_MinSize: {x: 681, y: 492}
+  m_MaxSize: {x: 18004, y: 14042}
   vertical: 0
   controlID: 36
 --- !u!114 &9
@@ -221,7 +221,7 @@ MonoBehaviour:
     y: 0
     width: 1221.3334
     height: 911.3333
-  m_MinSize: {x: 403, y: 492}
+  m_MinSize: {x: 405, y: 492}
   m_MaxSize: {x: 14003, y: 14042}
   vertical: 1
   controlID: 37
@@ -247,8 +247,8 @@ MonoBehaviour:
     y: 0
     width: 1221.3334
     height: 628
-  m_MinSize: {x: 403, y: 221}
-  m_MaxSize: {x: 12003, y: 4021}
+  m_MinSize: {x: 405, y: 221}
+  m_MaxSize: {x: 12005, y: 4021}
   vertical: 0
   controlID: 38
 --- !u!114 &11
@@ -350,8 +350,8 @@ MonoBehaviour:
     y: 0
     width: 470.66663
     height: 911.3333
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 23}
   m_Panes:
   - {fileID: 23}
@@ -410,7 +410,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 529042
+  m_LastSelectedObjectID: 16308
 --- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -447,9 +447,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 78.66486, y: 2.069048, z: -281.01398}
+    m_Target: {x: 16.24554, y: 15.287724, z: -316.4998}
     speed: 2
-    m_Value: {x: 78.66486, y: 2.069048, z: -281.01398}
+    m_Value: {x: 16.24554, y: 15.287724, z: -316.4998}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -500,9 +500,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_Size:
-    m_Target: 479.29877
+    m_Target: 891.463
     speed: 2
-    m_Value: 479.29877
+    m_Value: 933.4691
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -775,7 +775,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: c0a4e9ffc8a6e9ff14b9edffd2b9edff6e72eeff4c38faffba06feffdc07feff2e09feff360afeff6cfbffff3236020078360200805b02004cf90900061e0a00341e0a0042430a00
+      m_ExpandedIDs: 6cfbffff583f00007e640000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -837,22 +837,22 @@ MonoBehaviour:
     m_SkipHidden: 1
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Prefabs
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\User\UnityProject\Samurai\PandoraCube_The_Samurai_of_Honor\The_Samurai_of_Honor
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ec680000
-    m_LastClickedID: 26860
-    m_ExpandedIDs: 00000000d2680000d468000000ca9a3b
+    m_SelectedIDs: 08690000
+    m_LastClickedID: 26888
+    m_ExpandedIDs: 00000000f2680000f468000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -880,7 +880,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000d2680000d4680000
+    m_ExpandedIDs: 00000000f2680000f4680000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -908,7 +908,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c623000092e6ffff9c550000a067ffff7c3e0000b0430000803f00002c4000002af8ffffb840000010590000fa6700000000000064d7fbff8ed50100b46500002a240400
+    m_ExpandedInstanceIDs: c623000092e6ffff9c550000a067ffff7c3e0000b0430000803f00002c4000002af8ffffb840000010590000fa6700000000000064d7fbff8ed50100b46500002a240400d0650000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

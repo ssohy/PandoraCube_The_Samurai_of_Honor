@@ -99,7 +99,8 @@ public class Enemy : MonoBehaviour
         else
         {
             //mat.color = Color.gray;
-            Destroy(gameObject, 4);
+            //Destroy(gameObject, 1);
+            gameObject.SetActive(false);
             enemyCnt++;
         }
     }

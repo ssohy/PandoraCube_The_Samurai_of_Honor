@@ -24,14 +24,14 @@ public class Player : MonoBehaviour
     
 
     Rigidbody rigid;
+    Animator anim;
 
     bool isDamage;
-
     bool isDay;
     int currentDay;
     string nextScene;
 
-    Animator anim;
+    bool isBorder;
 
     void Awake()
     {
@@ -62,11 +62,11 @@ public class Player : MonoBehaviour
         v = Input.GetAxis("Vertical");
 
         Vector3 moveV = new Vector3(h, 0, v).normalized;
-        if (!(h == 0 && v == 0))
+        if (!(h == 0 && v == 0) || !isBorder)
         {
             transform.position += moveV * moveSpeed * Time.deltaTime;
             anim.SetBool("isWalk", true); // 이동 애니메이션 활성화
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(moveV), Time.deltaTime * rotateSpeed);
+            //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(moveV), Time.deltaTime * rotateSpeed);
             
         }
         else
@@ -154,16 +154,21 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(1f);
         isDamage = false;
     }
-    /*
+    
     void FreezeRotation()
     {
         rigid.angularVelocity = Vector3.zero;
     }
-
+    void StopToWall()
+    {
+        Debug.DrawRay(transform.position, transform.forward * 5, Color.green);
+        isBorder = Physics.Raycast(transform.position, transform.forward, 5, LayerMask.GetMask("Wall"));
+    }
     void FixedUpdate()
     {
-        FreezeRotation();
-    }*/
+        //FreezeRotation();
+        StopToWall();
+    }
 
 
     void gameOver()
