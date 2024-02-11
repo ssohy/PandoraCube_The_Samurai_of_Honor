@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
     public GameObject diary;
 
     public int currentDay;
-    public float dTime;
     public bool isDay;
 
     public Transform[] spawnPoints;
@@ -24,20 +23,23 @@ public class GameManager : MonoBehaviour
     public bool spawnEnd;
     public float nextSpawnDelay;
     public float curSpawnDelay;
-    public int enemyCnt;
     public int playerHp;
+
+    private DataManager dataManager;
+    int hp, cnt, day;
     void Awake()
     {
-        //Debug.Log("시작 위치 : " + spawnMidwayEndPoint[0].position);
+        dataManager = DataManager.GetInstance();
+        playerHp =  dataManager.GetPlayerHp();
+        currentDay = dataManager.GetCurrentDay();
+        isDay = dataManager.GetIsDay();
+
         player.transform.position = spawnMidwayEndPoint[0].position;
 
-        currentDay = objectManager.GetComponent<ObjectManager>().currentDay;
-        isDay = objectManager.GetComponent<ObjectManager>().isDay;
         spawnList = new List<Spawn>();
         enemyObjs = new string[] { "Samurai", "Bowel", "Skull" };
-        dTime = 0;
-        isDay = true;
-        enemyCnt = 0;
+        //isDay = true;
+        //enemyCnt = 0;
         DayStart();
     }
 
@@ -122,17 +124,7 @@ public class GameManager : MonoBehaviour
 
         if (enemy != null)
         {
-            //enemy.transform.position = spawnPoints[enemyPoint].position;
             enemy.SetActive(true);
-            /*
-            Rigidbody rigid = enemy.GetComponent<Rigidbody>();
-            Enemy enemyLogic = enemy.GetComponent<Enemy>();
-            enemyLogic.player = player;
-            enemyLogic.gameManager = this;
-            enemyLogic.objectManager = objectManager;
-
-            rigid.velocity = new Vector3(0, enemyLogic.speed * (-1));*/
-
             spawnIndex++;
         }
         if (spawnIndex == spawnList.Count)
@@ -144,6 +136,7 @@ public class GameManager : MonoBehaviour
         nextSpawnDelay = spawnList[spawnIndex].delay;
     }
 
+    /*
     void MaskClear()
     {
         if(enemyCnt >= 550)
@@ -158,67 +151,8 @@ public class GameManager : MonoBehaviour
         {
 
         }
-    }
-
-    /*
-    // Day별 낮, 밤 타이머 설정하기
-    void IsDay()
-    {
-        if (currentDay == 3)
-        {
-            // 낮 15분, 밤 15분
-            if (isDay)
-            {
-                dTime += Time.deltaTime;
-
-                if (dTime >= 900f)
-                {
-                    //Debug.Log("15분 경과");
-                    dTime = 0;
-                    isDay = false;
-                }
-            }
-            else
-            {
-                dTime += Time.deltaTime;
-                if (dTime >= 900f)
-                {
-                    //Debug.Log("15분 경과");
-                    dTime = 0;
-                    #if UNITY_EDITOR
-                          UnityEditor.EditorApplication.isPlaying = false;
-                    #else
-                         Application.Quit();
-                    #endif
-                }
-            }
-        }
-        else
-        {
-            // 낮 10분, 밤 15분
-            if (isDay)
-            {
-                dTime += Time.deltaTime;
-                if (dTime >= 600f)
-                {
-                    //Debug.Log("10분 경과");
-                    dTime = 0;
-                    isDay = false;
-                }
-            }
-            else
-            {
-                dTime += Time.deltaTime;
-                if (dTime >= 900f)
-                {
-                    //Debug.Log("15분 경과");
-                    dTime = 0;
-                    isDay = true;
-                    currentDay++;
-                }
-            }
-        }
     }*/
+
     
 }
 

@@ -33,18 +33,20 @@ public class Player : MonoBehaviour
 
     bool isBorder;
 
+    int enemyCnt;
+    private DataManager dataManager;
     void Awake()
     {
+        dataManager = DataManager.GetInstance();
+
         gameManagerObject = GameObject.Find("GameManager");
         gameManager = gameManagerObject.GetComponent<GameManager>();
 
+        hp = dataManager.GetPlayerHp();
+        isDay = dataManager.GetIsDay();
+        currentDay = dataManager.GetCurrentDay();
 
         player = GameObject.Find("Player");
-        hp = 100;
-
-        isDay = gameManager.isDay;
-        currentDay = gameManager.currentDay;
-
         anim = GetComponent<Animator>();
     }
 
@@ -61,18 +63,38 @@ public class Player : MonoBehaviour
         h = Input.GetAxis("Horizontal");
         v = Input.GetAxis("Vertical");
 
+        moveV = new Vector3(h, 0, v).normalized;
+
+        if (moveV.magnitude > 0)
+        {
+            transform.position += moveV * moveSpeed * Time.deltaTime;
+            anim.SetBool("isWalk", true);
+
+            if (moveV != Vector3.zero)
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(moveV), Time.deltaTime * rotateSpeed);
+            }
+        }
+        else
+        {
+            anim.SetBool("isWalk", false);
+        }
+        /*
+        h = Input.GetAxis("Horizontal");
+        v = Input.GetAxis("Vertical");
+
         Vector3 moveV = new Vector3(h, 0, v).normalized;
         if (!(h == 0 && v == 0) || !isBorder)
         {
             transform.position += moveV * moveSpeed * Time.deltaTime;
             anim.SetBool("isWalk", true); // 이동 애니메이션 활성화
-            //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(moveV), Time.deltaTime * rotateSpeed);
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(moveV), Time.deltaTime * rotateSpeed);
             
         }
         else
         {
             anim.SetBool("isWalk", false); // 이동 애니메이션 비활성화
-        }
+        }*/
         /*
         h = Input.GetAxisRaw("Horizontal");
         v = Input.GetAxisRaw("Vertical");
@@ -139,6 +161,9 @@ public class Player : MonoBehaviour
             {
                 currentDay++;
                 isDay = true;
+                //데이터 전달
+                dataManager.SetCurrentDay(currentDay);
+                dataManager.SetIsDay(isDay);
                 // 씬 전환
                 nextScene = "Day" + currentDay.ToString();
                 SceneManager.LoadScene(nextScene);
@@ -161,7 +186,8 @@ public class Player : MonoBehaviour
     }
     void StopToWall()
     {
-        Debug.DrawRay(transform.position, transform.forward * 5, Color.green);
+        Debug.DrawRay(transform.position, transform.forward * 10, Color.red);
+
         isBorder = Physics.Raycast(transform.position, transform.forward, 5, LayerMask.GetMask("Wall"));
     }
     void FixedUpdate()
