@@ -185,7 +185,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 12658495}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -275,7 +275,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 84096325}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 47, y: 0, z: 650}
+  m_LocalPosition: {x: 40.6, y: 20, z: 650}
   m_LocalScale: {x: 60, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1389964882}
@@ -314,7 +314,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1151844921754575795, guid: 00652e6e60e3e2646badcda3a38f5019, type: 3}
+  - {fileID: 1151844921754575795, guid: 696b7600ed901e247980893e3849af59, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -432,7 +432,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 361273228}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -528,7 +528,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 490952667}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1349,7 +1349,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 646848325}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1687,7 +1687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1381164216}
-  bowelPrefab: {fileID: 6178305393742208914, guid: bdd0d8638c0082b4b9defb6021df592f, type: 3}
+  bowelPrefab: {fileID: 7041162562112887346, guid: bdd0d8638c0082b4b9defb6021df592f, type: 3}
   skullPrefab: {fileID: 4545030263557739253, guid: dd9b6c9341cba7d4c8e489620e9de9ca, type: 3}
   samuraiPrefab: {fileID: 3817436712436703165, guid: d9eb5380a93d7244985f42acfd5b7ee7, type: 3}
   playerHp: 0
@@ -2171,10 +2171,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 5685185366302499220}
   offsetX: 0
-  offsetY: 30
-  offsetZ: -45
+  offsetY: 20
+  offsetZ: -35
   CameraSpeed: 10
-  angleX: 20
+  angleX: 0
   angleY: 0
   angleZ: 0
 --- !u!1 &1723271318
@@ -51991,7 +51991,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &4243393425734397039
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -63980,7 +63980,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7702722423760262001}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 4.9766927, z: -64.05568}
+  m_LocalPosition: {x: 0, y: 4.957, z: -64.338}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 1196342866}
@@ -68678,6 +68678,7 @@ GameObject:
   - component: {fileID: 5685185366302499222}
   - component: {fileID: 5685185366302499221}
   - component: {fileID: 5685185366302499224}
+  - component: {fileID: 5685185366302499225}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -68704,7 +68705,7 @@ MonoBehaviour:
   - {fileID: 1236138212}
   - {fileID: 1512904452}
   - {fileID: 84096326}
-  moveSpeed: 150
+  moveSpeed: 80
   rotateSpeed: 10
   sword: {fileID: 483409761993007552}
 --- !u!136 &5685185366302499222
@@ -68758,6 +68759,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!143 &5685185366302499225
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5685185366302499220}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 1.5
+  m_Radius: 0.5
+  m_SlopeLimit: 90
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.66, z: 0}
 --- !u!4 &5687155228695423937
 Transform:
   m_ObjectHideFlags: 0

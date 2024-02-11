@@ -15,13 +15,15 @@ public class Player : MonoBehaviour
     Vector3 moveV;
     public float moveSpeed;
     public float rotateSpeed = 10.0f;
+    private float gravity; //중력
+    private CharacterController controller; //캐릭터 컨트롤러
 
     // (공격 변수)
     bool AttackDown;
     float AttackDelay;
     bool isAttackReady;
     public Sword sword;
-    
+    int tmp = 0;
 
     Rigidbody rigid;
     Animator anim;
@@ -48,6 +50,9 @@ public class Player : MonoBehaviour
 
         player = GameObject.Find("Player");
         anim = GetComponent<Animator>();
+
+        controller = GetComponent<CharacterController>();
+        gravity = 10f; //중력값 설정
     }
 
     void Update()
@@ -62,21 +67,27 @@ public class Player : MonoBehaviour
     {
         h = Input.GetAxis("Horizontal");
         v = Input.GetAxis("Vertical");
-
         moveV = new Vector3(h, 0, v).normalized;
+
+        moveV.y -= gravity * Time.deltaTime;
 
         if (moveV.magnitude > 0)
         {
-            transform.position += moveV * moveSpeed * Time.deltaTime;
+            // 이동 애니메이션 처리
             anim.SetBool("isWalk", true);
 
+            // CharacterController를 이용하여 이동
+            controller.Move(moveV * moveSpeed * Time.deltaTime);
+
+            // 플레이어가 이동하면서 회전
             if (moveV != Vector3.zero)
             {
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(moveV), Time.deltaTime * rotateSpeed);
+                transform.rotation = Quaternion.Euler(0, Mathf.Atan2(h, v) * Mathf.Rad2Deg, 0);
             }
         }
         else
         {
+            // 이동 애니메이션을 중지
             anim.SetBool("isWalk", false);
         }
         /*
@@ -118,7 +129,18 @@ public class Player : MonoBehaviour
             sword.StartSwing();
             //anim.SetTrigger("doSwing");
             AttackDelay = 0;
-            anim.SetTrigger("doAttack");
+
+            if (tmp == 0)
+            {
+                anim.SetTrigger("doAttack");
+                tmp = 1;
+            }
+            else if (tmp == 1)
+            {
+                anim.SetTrigger("doSlash");
+                tmp = 0;
+            }
+
 
         }
 
@@ -129,10 +151,10 @@ public class Player : MonoBehaviour
             //anim.SetTrigger("doSwing");
             AttackDelay = 0;
             anim.SetTrigger("doDoubleAttack");
-           
+
         }
 
-        
+
     }
     void OnTriggerEnter(Collider other)
     {
@@ -147,13 +169,13 @@ public class Player : MonoBehaviour
             Debug.Log("플레이어 체력 : " + hp);
         }
 
-        if(other.tag == "Midway")
+        if (other.tag == "Midway")
         {
             isDay = false;
             Debug.Log("isDay : " + isDay);
         }
 
-        if(other.tag  == "End")
+        if (other.tag == "End")
         {
             if (currentDay == 3)
                 gameOver();
@@ -179,14 +201,14 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(1f);
         isDamage = false;
     }
-    
+
     void FreezeRotation()
     {
         rigid.angularVelocity = Vector3.zero;
     }
     void StopToWall()
     {
-        Debug.DrawRay(transform.position, transform.forward * 10, Color.red);
+        //Debug.DrawRay(transform.position, transform.forward * 10, Color.red);
 
         isBorder = Physics.Raycast(transform.position, transform.forward, 5, LayerMask.GetMask("Wall"));
     }
@@ -202,9 +224,9 @@ public class Player : MonoBehaviour
         if (hp <= 0)
         {
             #if UNITY_EDITOR
-                 UnityEditor.EditorApplication.isPlaying = false;
+                        UnityEditor.EditorApplication.isPlaying = false;
             #else
-                  Application.Quit();
+                              Application.Quit();
             #endif
         }
     }

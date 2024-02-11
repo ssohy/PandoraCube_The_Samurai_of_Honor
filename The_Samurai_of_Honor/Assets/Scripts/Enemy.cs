@@ -92,16 +92,10 @@ public class Enemy : MonoBehaviour
 
     IEnumerator OnDamage()
     {
-        //mat.color = Color.red;
         yield return null;
 
-        if(enemyCurHp > 0)
+        if (enemyCurHp <= 0)
         {
-            //mat.color = Color.white;
-        }
-        else
-        {
-            //mat.color = Color.gray;
             //Destroy(gameObject, 1);
             gameObject.SetActive(false);
             enemyCnt++;
