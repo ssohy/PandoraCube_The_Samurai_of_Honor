@@ -15,11 +15,30 @@ public class ObjectManager : MonoBehaviour
     GameObject[] skull;
     GameObject[] targetPool;
 
+    public int playerHp;
     public bool isDay;
+    public int enemyCnt;
     public int currentDay;
     int samuraiCnt;
     int bowelCnt;
     int skullCnt;
+
+    private DataManager dataManager;
+    int hp, cnt, day;
+    void Awake()
+    {
+        dataManager = DataManager.GetInstance();
+        currentDay = dataManager.GetCurrentDay();
+        isDay = dataManager.GetIsDay();
+        //currentDay = 1;
+        //isDay = true;
+        SpawnEnemyCount();
+        bowel = new GameObject[bowelCnt]; // 몇개?
+        samurai = new GameObject[samuraiCnt]; // 몇개?
+        skull = new GameObject[skullCnt]; // 몇개?
+        Generate();
+        
+    }
 
     void SpawnEnemyCount()
     {
@@ -43,21 +62,6 @@ public class ObjectManager : MonoBehaviour
                 break;
         }
     }
-
-
-    void Awake()
-    {
-        currentDay = 1;
-        isDay = true;
-        SpawnEnemyCount();
-        bowel = new GameObject[bowelCnt]; // 몇개?
-        samurai = new GameObject[samuraiCnt]; // 몇개?
-        skull = new GameObject[skullCnt]; // 몇개?
-        Generate();
-    }
-
-
-
     void Generate()
     {
         if (samurai != null)

@@ -28,8 +28,11 @@ public class Enemy : MonoBehaviour
 
     int enemyCnt;
     Animator anim;
+
+    private DataManager dataManager;
     void Awake()
     {
+        dataManager = DataManager.GetInstance();
         GameObject gameManagerObject = GameObject.Find("GameManager");
         gameManager = gameManagerObject.GetComponent<GameManager>();
         
@@ -42,9 +45,9 @@ public class Enemy : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
         capsuleCollider = GetComponent<CapsuleCollider>();
-        //mat = GetComponent<MeshRenderer>().material;
         nav = GetComponent<NavMeshAgent>();
-        enemyCnt = gameManager.enemyCnt;
+        //enemyCnt = gameManager.enemyCnt;
+        enemyCnt = dataManager.GetEnemyCount();
         anim = GetComponent<Animator>();
     }
 
@@ -102,6 +105,7 @@ public class Enemy : MonoBehaviour
             //Destroy(gameObject, 1);
             gameObject.SetActive(false);
             enemyCnt++;
+            dataManager.SetEnemyCount(enemyCnt);
         }
     }
     void Walk()
