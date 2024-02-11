@@ -3234,7 +3234,6 @@ MonoBehaviour:
   objectManager: {fileID: 1276038595}
   diary: {fileID: 0}
   currentDay: 0
-  dTime: 0
   isDay: 0
   spawnPoints:
   - {fileID: 1109554637}
@@ -3250,7 +3249,6 @@ MonoBehaviour:
   spawnEnd: 0
   nextSpawnDelay: 0
   curSpawnDelay: 0
-  enemyCnt: 0
   playerHp: 0
 --- !u!4 &754072011
 Transform:
@@ -5016,10 +5014,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 754072010}
-  bowelPrefab: {fileID: 6178305393742208914, guid: bdd0d8638c0082b4b9defb6021df592f, type: 3}
+  bowelPrefab: {fileID: 7041162562112887346, guid: bdd0d8638c0082b4b9defb6021df592f, type: 3}
   skullPrefab: {fileID: 4545030263557739253, guid: dd9b6c9341cba7d4c8e489620e9de9ca, type: 3}
   samuraiPrefab: {fileID: 3817436712436703165, guid: d9eb5380a93d7244985f42acfd5b7ee7, type: 3}
+  playerHp: 0
   isDay: 0
+  enemyCnt: 0
   currentDay: 0
 --- !u!1 &1281706121
 GameObject:
@@ -7384,6 +7384,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e146fcf91e7a25d439551fab9750a6a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHp: 0
+  enemyCnt: 0
+  currentDay: 0
+  isDay: 0
 --- !u!4 &1979003680
 Transform:
   m_ObjectHideFlags: 0
