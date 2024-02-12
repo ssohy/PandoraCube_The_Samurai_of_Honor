@@ -59,12 +59,11 @@ public class Player : MonoBehaviour
     void Update()
     {
         Move();
-        Attack();
         gameOver();
     }
 
-    //#.이동(ui추가할 때 버튼으로 수정할 예정)
-    void Move() // 현재는 편의성을 위해 WASD로 이동중
+    //#.이동
+    void Move()
     {
         h = joy.Horizontal;
         v = joy.Vertical;
@@ -110,16 +109,15 @@ public class Player : MonoBehaviour
     }
 
     //#.공격
-    void Attack() // 현재는 편의성을 위해 좌클릭, 우클릭으로 공격
+    public void Attack()
     {
         AttackDelay += Time.deltaTime;
         isAttackReady = sword.rate < AttackDelay;
 
-        if (Input.GetMouseButtonDown(0) && isAttackReady) // 기본 공격
+        if (isAttackReady) // 기본 공격
         {
-            //Debug.Log("기본 공격");
+            Debug.Log("기본 공격");
             sword.StartSwing();
-            //anim.SetTrigger("doSwing");
             AttackDelay = 0;
 
             if (tmp == 0)
@@ -136,11 +134,17 @@ public class Player : MonoBehaviour
 
         }
 
-        if (Input.GetMouseButtonDown(1) && isAttackReady) // 더블 공격
+
+    }
+    public void DoubleAttack() // 현재는 편의성을 위해 좌클릭, 우클릭으로 공격
+    {
+        AttackDelay += Time.deltaTime;
+        isAttackReady = sword.rate < AttackDelay;
+
+        if (isAttackReady) // 더블 공격
         {
-            //Debug.Log("더블 공격");
+            Debug.Log("더블 공격");
             sword.StartDoubleSwing();
-            //anim.SetTrigger("doSwing");
             AttackDelay = 0;
             anim.SetTrigger("doDoubleAttack");
 
