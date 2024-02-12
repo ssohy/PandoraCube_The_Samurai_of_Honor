@@ -120,11 +120,12 @@ public class GameManager : MonoBehaviour
         int enemyPoint = spawnList[spawnIndex].point;
         GameObject enemy = objectManager.MakeObj(enemyObjs[enemyIndex]);
         enemy.transform.position = spawnPoints[enemyPoint].position;
-        Debug.Log("위치 : " + enemy.transform.position);
+        //Debug.Log("위치 : " + enemy.transform.position);
 
         if (enemy != null)
         {
             enemy.SetActive(true);
+            enemy.GetComponent<Enemy>().OnEnable();
             spawnIndex++;
         }
         if (spawnIndex == spawnList.Count)
