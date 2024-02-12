@@ -109,13 +109,13 @@ public class Enemy : MonoBehaviour
     }
     void Attack()
     {
-        
+
         anim.SetTrigger("doAttack");
     }
-    void OnEnable()
+    public void OnEnable()
     {
-        currentDay = gameManager.currentDay;
-        isDay = gameManager.isDay;
+        currentDay =dataManager.GetCurrentDay();
+        isDay = dataManager.GetIsDay();
         switch (enemyName)
         {
             case "Samurai":
@@ -211,7 +211,4 @@ public class Enemy : MonoBehaviour
                 break;
         }
     }
-
-
-
 }

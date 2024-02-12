@@ -160,13 +160,17 @@ public class Player : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
+            Debug.Log("공격받는 중");
             if (!isDamage)
             {
                 Enemy enemy = other.GetComponent<Enemy>();
+                Debug.Log("현재 enemy" + enemy);
                 hp -= enemy.attackDamage;
+                dataManager.SetPlayerHp(hp);
+                Debug.Log("플레이어 체력 : " + hp);
                 StartCoroutine(OnDamage());
             }
-            Debug.Log("플레이어 체력 : " + hp);
+            
         }
 
         if (other.tag == "Midway")
