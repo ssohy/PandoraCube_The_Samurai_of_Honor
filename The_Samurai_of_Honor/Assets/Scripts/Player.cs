@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     GameObject gameManagerObject;
     public Transform[] spawnMidwayEndPoint;
     // (이동 변수)
+    public VariableJoystick joy;
     float h, v;
     Vector3 moveV;
     public float moveSpeed;
@@ -65,6 +66,27 @@ public class Player : MonoBehaviour
     //#.이동(ui추가할 때 버튼으로 수정할 예정)
     void Move() // 현재는 편의성을 위해 WASD로 이동중
     {
+        h = joy.Horizontal;
+        v = joy.Vertical;
+        moveV = new Vector3(h, 0, v).normalized;
+
+        moveV.y -= gravity * Time.deltaTime;
+
+        if (moveV.magnitude > 0)
+        {
+            anim.SetBool("isWalk", true);
+            controller.Move(moveV * moveSpeed * Time.deltaTime);
+            if (moveV != Vector3.zero)
+            {
+                transform.rotation = Quaternion.Euler(0, Mathf.Atan2(h, v) * Mathf.Rad2Deg, 0);
+            }
+        }
+        else
+        {
+            anim.SetBool("isWalk", false);
+        }
+
+        /* 키보드
         h = Input.GetAxis("Horizontal");
         v = Input.GetAxis("Vertical");
         moveV = new Vector3(h, 0, v).normalized;
@@ -73,13 +95,8 @@ public class Player : MonoBehaviour
 
         if (moveV.magnitude > 0)
         {
-            // 이동 애니메이션 처리
             anim.SetBool("isWalk", true);
-
-            // CharacterController를 이용하여 이동
             controller.Move(moveV * moveSpeed * Time.deltaTime);
-
-            // 플레이어가 이동하면서 회전
             if (moveV != Vector3.zero)
             {
                 transform.rotation = Quaternion.Euler(0, Mathf.Atan2(h, v) * Mathf.Rad2Deg, 0);
@@ -87,34 +104,9 @@ public class Player : MonoBehaviour
         }
         else
         {
-            // 이동 애니메이션을 중지
             anim.SetBool("isWalk", false);
-        }
-        /*
-        h = Input.GetAxis("Horizontal");
-        v = Input.GetAxis("Vertical");
-
-        Vector3 moveV = new Vector3(h, 0, v).normalized;
-        if (!(h == 0 && v == 0) || !isBorder)
-        {
-            transform.position += moveV * moveSpeed * Time.deltaTime;
-            anim.SetBool("isWalk", true); // 이동 애니메이션 활성화
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(moveV), Time.deltaTime * rotateSpeed);
-            
-        }
-        else
-        {
-            anim.SetBool("isWalk", false); // 이동 애니메이션 비활성화
         }*/
-        /*
-        h = Input.GetAxisRaw("Horizontal");
-        v = Input.GetAxisRaw("Vertical");
 
-        moveV = new Vector3(h, 0, v).normalized;
-
-        transform.position += moveV * moveSpeed * Time.deltaTime;
-        //anim.SetBool("isWalk", moveV != transform.position);*/
-        //if (moveV.magnitude > 0)
     }
 
     //#.공격
@@ -160,14 +152,11 @@ public class Player : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            Debug.Log("공격받는 중");
             if (!isDamage)
             {
                 Enemy enemy = other.GetComponent<Enemy>();
-                Debug.Log("현재 enemy" + enemy);
                 hp -= enemy.attackDamage;
                 dataManager.SetPlayerHp(hp);
-                Debug.Log("플레이어 체력 : " + hp);
                 StartCoroutine(OnDamage());
             }
             
