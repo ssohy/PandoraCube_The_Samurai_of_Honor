@@ -116,7 +116,7 @@ public class Player : MonoBehaviour
 
         if (isAttackReady) // 기본 공격
         {
-            Debug.Log("기본 공격");
+            //Debug.Log("기본 공격");
             sword.StartSwing();
             AttackDelay = 0;
 
@@ -130,27 +130,21 @@ public class Player : MonoBehaviour
                 anim.SetTrigger("doSlash");
                 tmp = 0;
             }
-
-
         }
-
-
     }
     public void DoubleAttack()
     {
         AttackDelay += Time.deltaTime;
         isAttackReady = sword.rate < AttackDelay;
-        Debug.Log("더블 공격 버튼 눌림");
+        //Debug.Log("더블 공격 버튼 눌림");
         if (isAttackReady) // 더블 공격
         {
-            Debug.Log("더블 공격");
+            //Debug.Log("더블 공격");
             sword.StartDoubleSwing();
             AttackDelay = 0;
             anim.SetTrigger("doDoubleAttack");
 
         }
-
-
     }
     void OnTriggerEnter(Collider other)
     {
@@ -165,10 +159,10 @@ public class Player : MonoBehaviour
             }
             
         }
-
         if (other.tag == "Midway")
         {
             isDay = false;
+            dataManager.SetIsDay(isDay);
             Debug.Log("isDay : " + isDay);
         }
 
