@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour
 
     private DataManager dataManager;
     int hp, cnt, day;
+
+    public GameObject pauseBack;
+    public GameObject restart;
     void Awake()
     {
         dataManager = DataManager.GetInstance();
@@ -41,6 +44,8 @@ public class GameManager : MonoBehaviour
         //isDay = true;
         //enemyCnt = 0;
         DayStart();
+        pauseBack.SetActive(false);
+        restart.SetActive(false);
     }
 
     void Update()
@@ -136,7 +141,26 @@ public class GameManager : MonoBehaviour
 
         nextSpawnDelay = spawnList[spawnIndex].delay;
     }
+    public void PauseGame()
+    {
+        //Debug.Log("버튼 눌림");
+        pauseBack.SetActive(!pauseBack.activeSelf);
+        restart.SetActive(!restart.activeSelf);
 
+        if (Time.timeScale == 0f)
+        {
+            Time.timeScale = 1f; // 게임 재개
+        }
+        else
+        {
+            Time.timeScale = 0f; // 게임 일시정지
+        }
+    }
+
+    public void RestartGame()
+    {
+        PauseGame();
+    }
     /*
     void MaskClear()
     {
@@ -154,6 +178,6 @@ public class GameManager : MonoBehaviour
         }
     }*/
 
-    
+
 }
 

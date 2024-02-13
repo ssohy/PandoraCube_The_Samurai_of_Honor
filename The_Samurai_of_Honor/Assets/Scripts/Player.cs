@@ -136,11 +136,11 @@ public class Player : MonoBehaviour
 
 
     }
-    public void DoubleAttack() // 현재는 편의성을 위해 좌클릭, 우클릭으로 공격
+    public void DoubleAttack()
     {
         AttackDelay += Time.deltaTime;
         isAttackReady = sword.rate < AttackDelay;
-
+        Debug.Log("더블 공격 버튼 눌림");
         if (isAttackReady) // 더블 공격
         {
             Debug.Log("더블 공격");
