@@ -71109,7 +71109,7 @@ MonoBehaviour:
   isDay: 0
   player: {fileID: 5685185366302499220}
   playerLight: {fileID: 1691014724}
-  gameLight: {fileID: 0}
+  gameLight: {fileID: 2128869438}
   daySkybox: {fileID: 2100000, guid: 170f2a047c448444ca1b8e2d20f504f1, type: 2}
   nightSkybox: {fileID: 2100000, guid: b73dc2c0c9eceae4486bdb5b744fceb9, type: 2}
 --- !u!4 &5687155228695423937
