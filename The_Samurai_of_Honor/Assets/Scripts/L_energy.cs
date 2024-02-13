@@ -12,15 +12,21 @@ public class L_energy : MonoBehaviour
 
     public GameObject player;
     public GameObject playerLight;
-
+    public GameObject gameLight;
     private float elapsedTime = 0f;
     private bool isSpotlightActive = false;
+
+    public Material daySkybox;
+    public Material nightSkybox;
+    private bool isNight = false;
     void Awake()
     {
         dataManager = DataManager.GetInstance();
         energyCnt = 0;
         isDay = dataManager.GetIsDay();
+        RenderSettings.skybox = daySkybox;
         playerLight.SetActive(false);
+        gameLight.SetActive(true);
     }
 
     void Update()
@@ -29,6 +35,10 @@ public class L_energy : MonoBehaviour
         if (!isDay)
         {
             NightStart();
+        }
+        else
+        {
+            DayStart();
         }
     }
 
@@ -42,11 +52,26 @@ public class L_energy : MonoBehaviour
         }
     }
 
+    void DayStart()
+    {
+        gameLight.SetActive(true);
+        if (isNight)
+        {
+            RenderSettings.skybox = daySkybox;
+            isNight = false;
+        }
+    }
+
+
     void NightStart()
     {
-        energyTime = energyCnt * 60;
-
-        // 전체 조명 끄는 코드 추가
+        energyTime = energyCnt * 10;
+        gameLight.SetActive(false);
+        if (!isNight)
+        {
+            RenderSettings.skybox = nightSkybox;
+            isNight = true;
+        }
 
         if (!isSpotlightActive)
         {
