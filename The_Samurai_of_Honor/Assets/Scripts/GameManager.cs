@@ -126,7 +126,6 @@ public class GameManager : MonoBehaviour
         GameObject enemy = objectManager.MakeObj(enemyObjs[enemyIndex]);
         enemy.transform.position = spawnPoints[enemyPoint].position;
         //Debug.Log("À§Ä¡ : " + enemy.transform.position);
-
         if (enemy != null)
         {
             enemy.SetActive(true);
