@@ -23,7 +23,9 @@ public class Player : MonoBehaviour
     // (공격 변수)
     bool AttackDown;
     float AttackDelay;
+    float DoubleAttackDelay;
     bool isAttackReady;
+    bool isDoubleAttackReady;
     public Sword sword;
     int tmp = 0;
 
@@ -138,10 +140,10 @@ public class Player : MonoBehaviour
     }
     public void DoubleAttack()
     {
-        AttackDelay += Time.deltaTime;
-        isAttackReady = sword.rate < AttackDelay;
+        DoubleAttackDelay += Time.deltaTime;
+        isDoubleAttackReady = sword.rate < DoubleAttackDelay;
         //Debug.Log("더블 공격 버튼 눌림");
-        if (isAttackReady) // 더블 공격
+        if (isDoubleAttackReady) // 더블 공격
         {
             //Debug.Log("더블 공격");
             sword.StartDoubleSwing();
@@ -166,7 +168,8 @@ public class Player : MonoBehaviour
                 gameManager.gameOver();
             
         }
-        if (other.tag == "Midway")
+
+            if (other.tag == "Midway")
         {
             isDay = false;
             dataManager.SetIsDay(isDay);

@@ -4,24 +4,25 @@ using UnityEngine;
 
 public class Diary : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject diaryImage;
 
-    // Update is called once per frame
-    void Update()
+    void Awake()
     {
-        
+        diaryImage.SetActive(false);    
     }
-
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Diary")
+        if(other.tag == "Player")
         {
-            //애니메이션
-            //UI
+            Debug.Log("다이어리 태그됨");
+            diaryImage.SetActive(true);
+            Time.timeScale = 0f;
         }
+    }
+
+    public void UIClose()
+    {
+        diaryImage.SetActive(false);
+        Time.timeScale = 1f;
     }
 }
