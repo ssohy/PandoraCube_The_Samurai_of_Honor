@@ -162,6 +162,8 @@ public class Player : MonoBehaviour
                 gameManager.UpdateHPBar(hp);
                 StartCoroutine(OnDamage());
             }
+            if (dataManager.GetPlayerHp() <= 0)
+                gameManager.gameOver();
             
         }
         if (other.tag == "Midway")
@@ -174,7 +176,7 @@ public class Player : MonoBehaviour
         if (other.tag == "End")
         {
             if (currentDay == 3)
-                gameOver();
+                gameManager.gameOver();
             else
             {
                 currentDay++;
@@ -217,13 +219,5 @@ public class Player : MonoBehaviour
     }
 
 
-    void gameOver()
-    {
-  
-        #if UNITY_EDITOR
-                    UnityEditor.EditorApplication.isPlaying = false;
-        #else
-                            Application.Quit();
-        #endif
-    }
+
 }

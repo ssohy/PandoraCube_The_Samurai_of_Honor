@@ -33,6 +33,10 @@ public class GameManager : MonoBehaviour
 
     public Slider hpSlider;
 
+    public Text dayText;
+    public Text killText;
+    int tmp, tmp1;
+
     void Awake()
     {
         dataManager = DataManager.GetInstance();
@@ -61,7 +65,10 @@ public class GameManager : MonoBehaviour
             SpawnEnemy();
             curSpawnDelay = 0;
         }
-        //IsDay();
+        tmp = dataManager.GetCurrentDay();
+        dayText.text = "Day " + tmp.ToString();
+        tmp1 = dataManager.GetEnemyCount();
+        killText.text = tmp1.ToString();
     }
     public void DayStart()
     {
@@ -70,7 +77,15 @@ public class GameManager : MonoBehaviour
         diary = GameObject.Find("Diary");
 
     }
+    public void gameOver()
+    {
 
+        #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+        #else
+                Application.Quit();
+        #endif
+    }
     // 적 스폰 파일
     public void ReadSpawnFile()
     {
