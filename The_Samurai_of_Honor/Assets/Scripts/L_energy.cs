@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class L_energy : MonoBehaviour
 {
@@ -13,12 +15,13 @@ public class L_energy : MonoBehaviour
     public GameObject player;
     public GameObject playerLight;
     public GameObject gameLight;
-    private float elapsedTime = 0f;
     private bool isSpotlightActive = false;
 
     public Material daySkybox;
     public Material nightSkybox;
     private bool isNight = false;
+
+    public Slider energySlider;
     void Awake()
     {
         dataManager = DataManager.GetInstance();
@@ -27,6 +30,8 @@ public class L_energy : MonoBehaviour
         RenderSettings.skybox = daySkybox;
         playerLight.SetActive(false);
         gameLight.SetActive(true);
+        InitializeEnergyBar();
+
     }
 
     void Update()
@@ -35,11 +40,14 @@ public class L_energy : MonoBehaviour
         if (!isDay)
         {
             NightStart();
+            energyTime -= Time.deltaTime;
+            UpdateEnergyBar(energyTime);
         }
         else
         {
             DayStart();
         }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -49,6 +57,8 @@ public class L_energy : MonoBehaviour
             Debug.Log("에너지 태그됨");
             Destroy(other.gameObject);
             energyCnt++;
+            energyTime = energyCnt * 10;
+            UpdateEnergyBar(energyTime);
         }
     }
 
@@ -65,7 +75,7 @@ public class L_energy : MonoBehaviour
 
     void NightStart()
     {
-        energyTime = energyCnt * 10;
+
         gameLight.SetActive(false);
         if (!isNight)
         {
@@ -79,12 +89,22 @@ public class L_energy : MonoBehaviour
             isSpotlightActive = true;
         }
 
-        elapsedTime += Time.deltaTime;
-
-        if (elapsedTime >= energyTime)
+        if (energyTime <= 0)
         {
             playerLight.SetActive(false);
             isSpotlightActive = false;
         }
     }
+
+    void InitializeEnergyBar()
+    {
+        energySlider.maxValue = 100;
+        energySlider.value = 0;
+    }
+
+    public void UpdateEnergyBar(float newEnergy)
+    {
+        energySlider.value = newEnergy;
+    }
+
 }
