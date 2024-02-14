@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject pauseBack;
     public GameObject restart;
+
+    public Slider hpSlider;
+
     void Awake()
     {
         dataManager = DataManager.GetInstance();
@@ -46,6 +49,8 @@ public class GameManager : MonoBehaviour
         DayStart();
         pauseBack.SetActive(false);
         restart.SetActive(false);
+        InitializeHPBar();
+
     }
 
     void Update()
@@ -159,6 +164,17 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         PauseGame();
+    }
+
+    void InitializeHPBar()
+    {
+        hpSlider.maxValue = 100;
+        hpSlider.value = dataManager.GetPlayerHp();
+    }
+
+    public void UpdateHPBar(int newHP)
+    {
+        hpSlider.value = newHP; // HP 바의 값 업데이트
     }
     /*
     void MaskClear()

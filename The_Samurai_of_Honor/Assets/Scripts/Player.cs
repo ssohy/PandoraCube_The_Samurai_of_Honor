@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
@@ -38,6 +39,8 @@ public class Player : MonoBehaviour
 
     int enemyCnt;
     private DataManager dataManager;
+
+
     void Awake()
     {
         dataManager = DataManager.GetInstance();
@@ -54,12 +57,13 @@ public class Player : MonoBehaviour
 
         controller = GetComponent<CharacterController>();
         gravity = 10f; //중력값 설정
+
     }
 
     void Update()
     {
         Move();
-        gameOver();
+        //gameOver();
     }
 
     //#.이동
@@ -155,6 +159,7 @@ public class Player : MonoBehaviour
                 Enemy enemy = other.GetComponent<Enemy>();
                 hp -= enemy.attackDamage;
                 dataManager.SetPlayerHp(hp);
+                gameManager.UpdateHPBar(hp);
                 StartCoroutine(OnDamage());
             }
             
@@ -186,6 +191,8 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+    
     IEnumerator OnDamage()
     {
         isDamage = true;
@@ -212,13 +219,11 @@ public class Player : MonoBehaviour
 
     void gameOver()
     {
-        if (hp <= 0)
-        {
-            #if UNITY_EDITOR
-                        UnityEditor.EditorApplication.isPlaying = false;
-            #else
-                              Application.Quit();
-            #endif
-        }
+  
+        #if UNITY_EDITOR
+                    UnityEditor.EditorApplication.isPlaying = false;
+        #else
+                            Application.Quit();
+        #endif
     }
 }
