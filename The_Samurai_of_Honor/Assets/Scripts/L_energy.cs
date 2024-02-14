@@ -31,7 +31,6 @@ public class L_energy : MonoBehaviour
         playerLight.SetActive(false);
         gameLight.SetActive(true);
         InitializeEnergyBar();
-
     }
 
     void Update()
@@ -75,7 +74,6 @@ public class L_energy : MonoBehaviour
 
     void NightStart()
     {
-
         gameLight.SetActive(false);
         if (!isNight)
         {
