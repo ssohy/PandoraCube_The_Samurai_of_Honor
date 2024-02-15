@@ -123,13 +123,13 @@ public class Enemy : MonoBehaviour
                 {
                     if (currentDay == 3)
                     {
-                        enemyMaxHp = 60;
+                        enemyMaxHp = 70;
                         enemyCurHp = enemyMaxHp;
                         attackDamage = 10;
                     }
                     else
                     {
-                        enemyMaxHp = 30;
+                        enemyMaxHp = 40;
                         enemyCurHp = enemyMaxHp;
                         attackDamage = 10;
                     }

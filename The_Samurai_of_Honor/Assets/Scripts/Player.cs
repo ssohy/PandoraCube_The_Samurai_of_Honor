@@ -21,7 +21,6 @@ public class Player : MonoBehaviour
     private CharacterController controller; //캐릭터 컨트롤러
 
     // (공격 변수)
-    bool AttackDown;
     float attackDelay;
     float doubleAttackDelay;
     public Sword sword;

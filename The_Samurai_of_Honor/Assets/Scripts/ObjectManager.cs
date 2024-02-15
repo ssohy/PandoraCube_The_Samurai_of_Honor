@@ -37,7 +37,6 @@ public class ObjectManager : MonoBehaviour
         samurai = new GameObject[samuraiCnt]; // 몇개?
         skull = new GameObject[skullCnt]; // 몇개?
         Generate();
-        
     }
 
     void SpawnEnemyCount()
@@ -46,19 +45,19 @@ public class ObjectManager : MonoBehaviour
         switch (currentDay)
         {
             case 1:
-                samuraiCnt = 40;
-                bowelCnt = 20;
-                skullCnt = 40;
+                samuraiCnt = 50;
+                bowelCnt = 30;
+                skullCnt = 60;
                 break;
             case 2:
-                samuraiCnt = 60;
-                bowelCnt = 30;
-                skullCnt = 50;
+                samuraiCnt = 70;
+                bowelCnt = 50;
+                skullCnt = 80;
                 break;
             case 3:
                 samuraiCnt = 60;
-                bowelCnt = 50;
-                skullCnt = 100;
+                bowelCnt = 80;
+                skullCnt = 140;
                 break;
         }
     }
