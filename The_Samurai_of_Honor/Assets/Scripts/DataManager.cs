@@ -11,7 +11,7 @@ public class DataManager : MonoBehaviour
     public int enemyCnt;
     public int currentDay;
     public bool isDay;
-
+    public int butterflyCnt;
     // 싱글톤 인스턴스 가져오기
     public static DataManager Instance
     {
@@ -53,6 +53,7 @@ public class DataManager : MonoBehaviour
         enemyCnt = 0;
         currentDay = 1;
         isDay = true;
+        butterflyCnt = 0;
 }
 
     //#1. 플레이어 HP
@@ -97,5 +98,16 @@ public class DataManager : MonoBehaviour
     public void SetIsDay(bool IsD)
     {
         isDay = IsD;
+    }
+
+    //#5. 나비
+    public int GetButterfly()
+    {
+        return butterflyCnt;
+    }
+
+    public void SetButterfly(int btf)
+    {
+        butterflyCnt = btf;
     }
 }
