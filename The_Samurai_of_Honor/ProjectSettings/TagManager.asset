@@ -10,7 +10,7 @@ TagManager:
   - End
   - Diary
   - Energy
-  - EnemyWeapon
+  - Butterfly
   layers:
   - Default
   - TransparentFX

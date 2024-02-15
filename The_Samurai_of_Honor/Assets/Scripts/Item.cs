@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-public class L_energy : MonoBehaviour
+public class Item : MonoBehaviour
 {
     private DataManager dataManager;
 
@@ -21,6 +20,7 @@ public class L_energy : MonoBehaviour
     public Material nightSkybox;
     private bool isNight = false;
 
+    public int butterfly;
     public Slider energySlider;
     void Awake()
     {
@@ -36,6 +36,7 @@ public class L_energy : MonoBehaviour
     void Update()
     {
         isDay = dataManager.GetIsDay();
+        butterfly = dataManager.GetButterfly();
         if (!isDay)
         {
             NightStart();
@@ -49,15 +50,22 @@ public class L_energy : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Energy")
+        if (other.tag == "Energy")
         {
             Debug.Log("에너지 태그됨");
             Destroy(other.gameObject);
             energyCnt++;
             energyTime = energyCnt * 10;
             UpdateEnergyBar(energyTime);
+        }
+        if(other.tag == "Butterfly")
+        {
+            Destroy(other.gameObject);
+            butterfly++;
+            dataManager.SetButterfly(butterfly);
+            
         }
     }
 
@@ -104,5 +112,4 @@ public class L_energy : MonoBehaviour
     {
         energySlider.value = newEnergy;
     }
-
 }
