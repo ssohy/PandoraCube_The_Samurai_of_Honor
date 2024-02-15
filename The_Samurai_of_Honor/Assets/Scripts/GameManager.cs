@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     public Text killText;
     int tmp, tmp1;
 
+
     void Awake()
     {
         dataManager = DataManager.GetInstance();
@@ -175,7 +176,8 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0f; // 게임 일시정지
         }
     }
-
+ 
+    
     public void RestartGame()
     {
         PauseGame();

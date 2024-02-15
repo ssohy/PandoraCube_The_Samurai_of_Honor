@@ -39274,7 +39274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 074c0f04873195e44aca6b2a681efa36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diaryImage: {fileID: 0}
+  diaryImage: {fileID: 1088405891}
 --- !u!4 &2792124749979917301
 Transform:
   m_ObjectHideFlags: 0
@@ -97943,6 +97943,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 5685185366302499220}
+    - target: {fileID: 7549861808545598939, guid: 7e38b69ac1c369644bd2ed33d7636304, type: 3}
+      propertyPath: basicRate
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 7549861808545598939, guid: 7e38b69ac1c369644bd2ed33d7636304, type: 3}
+      propertyPath: doubleRate
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e38b69ac1c369644bd2ed33d7636304, type: 3}
 --- !u!4 &7959146554373233962

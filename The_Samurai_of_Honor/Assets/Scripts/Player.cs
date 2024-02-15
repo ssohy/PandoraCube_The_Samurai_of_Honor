@@ -22,10 +22,8 @@ public class Player : MonoBehaviour
 
     // (공격 변수)
     bool AttackDown;
-    float AttackDelay;
-    float DoubleAttackDelay;
-    bool isAttackReady;
-    bool isDoubleAttackReady;
+    float attackDelay;
+    float doubleAttackDelay;
     public Sword sword;
     int tmp = 0;
 
@@ -117,15 +115,12 @@ public class Player : MonoBehaviour
     //#.공격
     public void Attack()
     {
-        AttackDelay += Time.deltaTime;
-        isAttackReady = sword.rate < AttackDelay;
-
-        if (isAttackReady) // 기본 공격
+        attackDelay += Time.deltaTime;
+        if (attackDelay >= sword.rate)
         {
-            //Debug.Log("기본 공격");
+            Debug.Log("기본 공격");
             sword.StartSwing();
-            AttackDelay = 0;
-
+            attackDelay = 0;
             if (tmp == 0)
             {
                 anim.SetTrigger("doAttack");
@@ -137,19 +132,24 @@ public class Player : MonoBehaviour
                 tmp = 0;
             }
         }
+        else
+        {
+            Debug.Log("기본쿨타임");
+        }
     }
     public void DoubleAttack()
     {
-        DoubleAttackDelay += Time.deltaTime;
-        isDoubleAttackReady = sword.rate < DoubleAttackDelay;
-        //Debug.Log("더블 공격 버튼 눌림");
-        if (isDoubleAttackReady) // 더블 공격
+        doubleAttackDelay += Time.deltaTime;
+        if (doubleAttackDelay >= sword.rate)
         {
-            //Debug.Log("더블 공격");
+            Debug.Log("더블 공격");
             sword.StartDoubleSwing();
-            AttackDelay = 0;
+            doubleAttackDelay = 0;
             anim.SetTrigger("doDoubleAttack");
-
+        }
+        else
+        {
+            Debug.Log("더블쿨타임");
         }
     }
     void OnTriggerEnter(Collider other)

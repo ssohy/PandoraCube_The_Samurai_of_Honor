@@ -47,5 +47,3 @@ public class Sword : MonoBehaviour
         meleeArea.enabled = false;
     }
 }
-
-
