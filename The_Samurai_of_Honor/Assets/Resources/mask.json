@@ -1,0 +1,19 @@
+{
+    "masks": [
+        {
+            "name": "MaskA",
+            "description": "Kill 350 Enemies",
+            "unlocked": false
+        },
+        {
+            "name": "MaskB",
+            "description": "Kill 450 Enemies",
+            "unlocked": false
+        },
+        {
+            "name": "MaskC",
+            "description": "Kill 550 Enemies",
+            "unlocked": false
+        }
+    ]
+}

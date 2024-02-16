@@ -72,12 +72,20 @@ public class Player : MonoBehaviour
         v = joy.Vertical;
         moveV = new Vector3(h, 0, v).normalized;
 
-        moveV.y -= gravity * Time.deltaTime;
+        if (controller.isGrounded)
+        {
+            moveV.y = -gravity;
+        }
+        else
+        {
+            moveV.y -= gravity * Time.deltaTime;
+        }
 
-        if (moveV.magnitude > 0)
+        controller.Move(moveV * moveSpeed * Time.deltaTime);
+
+        if (controller.velocity.magnitude > 0)
         {
             anim.SetBool("isWalk", true);
-            controller.Move(moveV * moveSpeed * Time.deltaTime);
             if (moveV != Vector3.zero)
             {
                 transform.rotation = Quaternion.Euler(0, Mathf.Atan2(h, v) * Mathf.Rad2Deg, 0);
@@ -85,6 +93,7 @@ public class Player : MonoBehaviour
         }
         else
         {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
             anim.SetBool("isWalk", false);
         }
 
@@ -115,7 +124,7 @@ public class Player : MonoBehaviour
     public void Attack()
     {
         attackDelay += Time.deltaTime;
-        if (attackDelay >= sword.rate)
+        if (attackDelay >= sword.basicRate)
         {
             Debug.Log("기본 공격");
             sword.StartSwing();
@@ -133,13 +142,13 @@ public class Player : MonoBehaviour
         }
         else
         {
-            Debug.Log("기본쿨타임");
+            Debug.Log("기본쿨타임 : " + attackDelay);
         }
     }
     public void DoubleAttack()
     {
         doubleAttackDelay += Time.deltaTime;
-        if (doubleAttackDelay >= sword.rate)
+        if (doubleAttackDelay >= sword.doubleRate)
         {
             Debug.Log("더블 공격");
             sword.StartDoubleSwing();
@@ -148,7 +157,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            Debug.Log("더블쿨타임");
+            Debug.Log("더블쿨타임 : " + doubleAttackDelay);
         }
     }
     void OnTriggerEnter(Collider other)
@@ -204,10 +213,6 @@ public class Player : MonoBehaviour
         isDamage = false;
     }
 
-    void FreezeRotation()
-    {
-        rigid.angularVelocity = Vector3.zero;
-    }
     void StopToWall()
     {
         //Debug.DrawRay(transform.position, transform.forward * 10, Color.red);

@@ -9,4 +9,9 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Day1");
     }
+
+    public void MaskPage()
+    {
+        SceneManager.LoadScene("Mask");
+    }
 }
