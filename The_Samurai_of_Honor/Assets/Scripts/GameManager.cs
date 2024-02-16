@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Application.targetFrameRate = 60;
         dataManager = DataManager.GetInstance();
         playerHp = dataManager.GetPlayerHp();
         currentDay = dataManager.GetCurrentDay();
