@@ -20,7 +20,6 @@ public class Enemy : MonoBehaviour
     Rigidbody rigid;
     BoxCollider boxCollider;
     CapsuleCollider capsuleCollider;
-    Material mat;
     NavMeshAgent nav;
 
     public Transform target;
@@ -60,11 +59,11 @@ public class Enemy : MonoBehaviour
     {
         float distance = Vector3.Distance(transform.position, target.position);
 
-        if (distance < 50f) 
+        if (distance < 50f)
         {
             Walk();
         }
-        if(distance < 30f)
+        if (distance < 30f)
         {
             Attack();
         }
@@ -92,15 +91,12 @@ public class Enemy : MonoBehaviour
 
     IEnumerator OnDamage()
     {
-        yield return null;
-
         if (enemyCurHp <= 0)
         {
-            //Destroy(gameObject, 1);
             gameObject.SetActive(false);
-            enemyCnt++;
-            dataManager.SetEnemyCount(enemyCnt);
+            dataManager.SetEnemyCount(++enemyCnt);
         }
+        yield break;
     }
     void Walk()
     {
@@ -109,106 +105,52 @@ public class Enemy : MonoBehaviour
     }
     void Attack()
     {
-
         anim.SetTrigger("doAttack");
     }
     public void OnEnable()
     {
-        currentDay =dataManager.GetCurrentDay();
-        isDay = dataManager.GetIsDay();
+        int currentDay = dataManager.GetCurrentDay();
+        bool isDay = dataManager.GetIsDay();
+
         switch (enemyName)
         {
             case "Samurai":
                 if (isDay)
                 {
-                    if (currentDay == 3)
-                    {
-                        enemyMaxHp = 70;
-                        enemyCurHp = enemyMaxHp;
-                        attackDamage = 10;
-                    }
-                    else
-                    {
-                        enemyMaxHp = 40;
-                        enemyCurHp = enemyMaxHp;
-                        attackDamage = 10;
-                    }
+                    enemyMaxHp = currentDay == 3 ? 70 : 40;
+                    attackDamage = 10;
                 }
                 else
                 {
-                    if(currentDay == 3)
-                    {
-                        enemyMaxHp = 60;
-                        enemyCurHp = enemyMaxHp;
-                        attackDamage = 10;
-                    }
-                    else
-                    {
-                        enemyMaxHp = 50;
-                        enemyCurHp = enemyMaxHp;
-                        attackDamage = 10;
-                    }
+                    enemyMaxHp = currentDay == 3 ? 60 : 50;
+                    attackDamage = 10;
                 }
                 break;
             case "Bowel":
                 if (isDay)
                 {
                     enemyMaxHp = 60;
-                    enemyCurHp = enemyMaxHp;
                     attackDamage = 40;
                 }
                 else
                 {
-                    if(currentDay == 1)
-                    {
-                        enemyMaxHp = 30;
-                        enemyCurHp = enemyMaxHp;
-                        attackDamage = 20;
-                    }
-                    else if(currentDay == 2)
-                    {
-                        enemyMaxHp = 40;
-                        enemyCurHp = enemyMaxHp;
-                        attackDamage = 30;
-                    }
-                    else if (currentDay == 3)
-                    {
-                        enemyMaxHp = 60;
-                        enemyCurHp = enemyMaxHp;
-                        attackDamage = 40;
-                    }
-
+                    enemyMaxHp = currentDay == 1 ? 30 : currentDay == 2 ? 40 : 60;
+                    attackDamage = currentDay == 1 ? 20 : currentDay == 2 ? 30 : 40;
                 }
                 break;
             case "Skull":
                 if (isDay)
                 {
                     enemyMaxHp = 40;
-                    enemyCurHp = enemyMaxHp;
                     attackDamage = 10;
                 }
                 else
                 {
-                    if (currentDay == 1)
-                    {
-                        enemyMaxHp = 40;
-                        enemyCurHp = enemyMaxHp;
-                        attackDamage = 10;
-                    }
-                    else if (currentDay == 2)
-                    {
-                        enemyMaxHp = 80;
-                        enemyCurHp = enemyMaxHp;
-                        attackDamage = 10;
-                    }
-                    else if (currentDay == 3)
-                    {
-                        enemyMaxHp = 90;
-                        enemyCurHp = enemyMaxHp;
-                        attackDamage = 20;
-                    }
+                    enemyMaxHp = currentDay == 1 ? 40 : currentDay == 2 ? 80 : 90;
+                    attackDamage = currentDay == 1 ? 10 : (currentDay == 2 ? 10 : 20);
                 }
                 break;
         }
+        enemyCurHp = enemyMaxHp;
     }
 }

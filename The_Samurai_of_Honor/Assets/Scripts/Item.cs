@@ -54,7 +54,6 @@ public class Item : MonoBehaviour
     {
         if (other.tag == "Energy")
         {
-            Debug.Log("에너지 태그됨");
             Destroy(other.gameObject);
             energyCnt++;
             energyTime = energyCnt * 10;

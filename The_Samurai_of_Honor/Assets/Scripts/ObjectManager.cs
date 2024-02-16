@@ -9,39 +9,33 @@ public class ObjectManager : MonoBehaviour
     public GameObject skullPrefab;
     public GameObject samuraiPrefab;
 
-
     GameObject[] bowel;
     GameObject[] samurai;
     GameObject[] skull;
-    GameObject[] targetPool;
-
-    public int playerHp;
-    public bool isDay;
-    public int enemyCnt;
-    public int currentDay;
-    int samuraiCnt;
-    int bowelCnt;
-    int skullCnt;
 
     private DataManager dataManager;
-    int hp, cnt, day;
+    int samuraiCnt, bowelCnt, skullCnt;
+
     void Awake()
     {
         dataManager = DataManager.GetInstance();
-        currentDay = dataManager.GetCurrentDay();
-        isDay = dataManager.GetIsDay();
-        //currentDay = 1;
-        //isDay = true;
-        SpawnEnemyCount();
-        bowel = new GameObject[bowelCnt]; // 몇개?
-        samurai = new GameObject[samuraiCnt]; // 몇개?
-        skull = new GameObject[skullCnt]; // 몇개?
-        Generate();
+        int currentDay = dataManager.GetCurrentDay();
+        bool isDay = dataManager.GetIsDay();
+
+        // 스폰할 적의 수 설정
+        SetEnemyCounts(currentDay);
+
+        // 배열 초기화
+        bowel = new GameObject[bowelCnt];
+        samurai = new GameObject[samuraiCnt];
+        skull = new GameObject[skullCnt];
+
+        // 적 생성
+        GenerateEnemies();
     }
 
-    void SpawnEnemyCount()
+    void SetEnemyCounts(int currentDay)
     {
-
         switch (currentDay)
         {
             case 1:
@@ -61,51 +55,34 @@ public class ObjectManager : MonoBehaviour
                 break;
         }
     }
-    void Generate()
+
+    void GenerateEnemies()
     {
-        if (samurai != null)
-        {
-            for (int index = 0; index < samurai.Length; index++)
-            {
-                //Debug.Log("사무라이 생성중 " + index);
-                samurai[index] = Instantiate(samuraiPrefab);
-                samurai[index].SetActive(false);
-            }
-        }
-        else
-        {
-            Debug.LogError("samurai 배열이 null");
-        }
+        GenerateObjects(samurai, samuraiPrefab);
+        GenerateObjects(bowel, bowelPrefab);
+        GenerateObjects(skull, skullPrefab);
+    }
 
-        if (bowel != null)
+    void GenerateObjects(GameObject[] array, GameObject prefab)
+    {
+        if (array != null)
         {
-            for (int index = 0; index < bowel.Length; index++)
+            for (int i = 0; i < array.Length; i++)
             {
-                bowel[index] = Instantiate(bowelPrefab);
-                bowel[index].SetActive(false);
+                array[i] = Instantiate(prefab);
+                array[i].SetActive(false);
             }
         }
         else
         {
-            Debug.LogError("bowel 배열이 null");
-        }
-
-        if (skull != null)
-        {
-            for (int index = 0; index < skull.Length; index++)
-            {
-                skull[index] = Instantiate(skullPrefab);
-                skull[index].SetActive(false);
-            }
-        }
-        else
-        {
-            Debug.LogError("skull 배열이 null");
+            Debug.LogError($"{prefab.name} 배열null");
         }
     }
 
     public GameObject MakeObj(string type)
     {
+        GameObject[] targetPool = null;
+
         switch (type)
         {
             case "Samurai":
@@ -119,16 +96,16 @@ public class ObjectManager : MonoBehaviour
                 break;
         }
 
-        for (int index = 0; index < targetPool.Length; index++)
+        if (targetPool != null)
         {
-            if (!targetPool[index].activeSelf)
+            foreach (var obj in targetPool)
             {
-                //targetPool[index].SetActive(true);
-                return targetPool[index];
+                if (!obj.activeSelf)
+                {
+                    return obj;
+                }
             }
         }
         return null;
     }
-
-    
 }

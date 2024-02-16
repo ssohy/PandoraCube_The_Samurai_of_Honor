@@ -1,7 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
-    - Camera
+    - CameraController
     - DataManager
     - Diary
     - Enemy
@@ -45,8 +45,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -147,9 +149,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4942}
     - Class: 114
-      Script: {instanceID: 4944}
-    - Class: 114
       Script: {instanceID: 5046}
+    - Class: 114
+      Script: {instanceID: 403538}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -252,9 +254,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4942}
     - Class: 114
-      Script: {instanceID: 4944}
-    - Class: 114
       Script: {instanceID: 5046}
+    - Class: 114
+      Script: {instanceID: 403538}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -357,9 +359,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4942}
     - Class: 114
-      Script: {instanceID: 4944}
-    - Class: 114
       Script: {instanceID: 5046}
+    - Class: 114
+      Script: {instanceID: 403538}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -397,7 +399,11 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 21
       Script: {instanceID: 0}
+    - Class: 23
+      Script: {instanceID: 0}
     - Class: 28
+      Script: {instanceID: 0}
+    - Class: 33
       Script: {instanceID: 0}
     - Class: 43
       Script: {instanceID: 0}
@@ -671,7 +677,7 @@ ScriptsOnlyBuild:
     className: SignalAsset
   - hash:
       serializedVersion: 2
-      Hash: 833054917db4744a06983d3a3c07dabe
+      Hash: 0bf690d6894ee9995aaf4907fdf49d6c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Sword
@@ -755,7 +761,7 @@ ScriptsOnlyBuild:
     className: DepthOfField
   - hash:
       serializedVersion: 2
-      Hash: 37a510c4825c5b5a3be344ecf752eb7b
+      Hash: fea597d25bd1f69a778e0e55628a989f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ObjectManager
@@ -1085,7 +1091,7 @@ ScriptsOnlyBuild:
     className: TwoBoneIKConstraint
   - hash:
       serializedVersion: 2
-      Hash: 712393c45b1309688b0c4d7a8f74a373
+      Hash: d62b7aac33b4af1c3ce408eb365bfc02
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -1275,12 +1281,6 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Enemy
-  - hash:
-      serializedVersion: 2
-      Hash: fe837da89da3dda3d38648dd276b593e
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Camera
   - hash:
       serializedVersion: 2
       Hash: a5781dc71a671b1ad2b38de19f24b71f
@@ -1509,6 +1509,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Postprocessing.Runtime.dll
     namespaceName: UnityEngine.Rendering.PostProcessing
     className: AmbientOcclusion
+  - hash:
+      serializedVersion: 2
+      Hash: fe837da89da3dda3d38648dd276b593e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CameraController
   platform: 13
   scenePathNames:
   - Assets/Scenes/Start.unity
@@ -1516,4 +1522,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Day1.unity
   - Assets/Scenes/Day2.unity
   - Assets/Scenes/Day3.unity
-  playerPath: C:/Users/User/Desktop/test6.apk
+  playerPath: C:/Users/User/Desktop/test10.apk
