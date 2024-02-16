@@ -6,7 +6,7 @@ using UnityEngine.Video;
 public class Videoplayer : MonoBehaviour
 {
     public VideoPlayer video;
-
+    public AudioSource backMusic;
     void Awake()
     {
         Time.timeScale = 0f;
@@ -17,5 +17,6 @@ public class Videoplayer : MonoBehaviour
     {
         Time.timeScale = 1f;
         gameObject.SetActive(false); // 프롤로그 영상을 비활성화
+        backMusic.Play();
     }
 }
