@@ -23,7 +23,6 @@ public class Player : MonoBehaviour
 
     // (공격 변수)
     float attackDelay;
-    float doubleAttackDelay;
     public Sword sword;
     int tmp = 0;
     public GameObject delayImage;
@@ -165,7 +164,6 @@ public class Player : MonoBehaviour
     {
         Debug.Log("더블 공격");
         sword.StartDoubleSwing();
-        doubleAttackDelay = 0;
         anim.SetTrigger("doDoubleAttack");
 
         // 카운트다운 시작
@@ -193,11 +191,14 @@ public class Player : MonoBehaviour
                 StartCoroutine(OnDamage());
             }
             if (dataManager.GetPlayerHp() <= 0)
-                gameManager.gameOver();
-            
+            {
+                anim.SetTrigger("doDie");
+
+                Invoke("LoadStartScene", 5f);
+            }
         }
 
-            if (other.tag == "Midway")
+        if (other.tag == "Midway")
         {
             isDay = false;
             dataManager.SetIsDay(isDay);
@@ -224,8 +225,11 @@ public class Player : MonoBehaviour
             }
         }
     }
+    void LoadStartScene()
+    {
+        SceneManager.LoadScene("Start");
+    }
 
-    
     IEnumerator OnDamage()
     {
         isDamage = true;

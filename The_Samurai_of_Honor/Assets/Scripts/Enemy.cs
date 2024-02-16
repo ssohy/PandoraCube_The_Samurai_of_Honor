@@ -93,6 +93,7 @@ public class Enemy : MonoBehaviour
     {
         if (enemyCurHp <= 0)
         {
+            anim.SetTrigger("doDie");
             gameObject.SetActive(false);
             dataManager.SetEnemyCount(++enemyCnt);
         }
@@ -101,7 +102,7 @@ public class Enemy : MonoBehaviour
     void Walk()
     {
         nav.SetDestination(target.position);
-        //anim.SetBool("isWalk", true);
+        anim.SetTrigger("doWalk");
     }
     void Attack()
     {

@@ -262,7 +262,6 @@
 7,Skull,6
 5,Samurai,6
 8,Samurai,6
-
 9,Samurai,5
 5,Skull,7
 6,Bowel,6
