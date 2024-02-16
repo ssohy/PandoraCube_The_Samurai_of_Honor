@@ -68,13 +68,12 @@ public class Player : MonoBehaviour
         Move();
         if (isCountingDown)
         {
-            // 더블 공격 카운트다운 중일 때의 처리
             countdownTime -= Time.deltaTime;
             UpdateCountdownText();
 
             if (countdownTime <= 0f)
             {
-                // 카운트다운 종료 후 처리
+                delayImage.SetActive(false);
                 countdownText.gameObject.SetActive(false);
                 isCountingDown = false;
             }
@@ -167,10 +166,12 @@ public class Player : MonoBehaviour
         sword.StartDoubleSwing();
         doubleAttackDelay = 0;
         anim.SetTrigger("doDoubleAttack");
+
         // 카운트다운 시작
         isCountingDown = true;
         countdownTime = 10f;
         UpdateCountdownText();
+        delayImage.SetActive(true);
         countdownText.gameObject.SetActive(true);
     }
     private void UpdateCountdownText()
