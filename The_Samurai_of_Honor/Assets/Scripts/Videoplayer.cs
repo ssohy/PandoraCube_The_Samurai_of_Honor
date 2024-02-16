@@ -6,7 +6,6 @@ using UnityEngine.Video;
 public class Videoplayer : MonoBehaviour
 {
     public VideoPlayer video;
-    public GameObject gameManager;
 
     void Awake()
     {

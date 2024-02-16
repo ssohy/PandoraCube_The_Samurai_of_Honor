@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.IO;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,8 +25,8 @@ public class GameManager : MonoBehaviour
     public GameObject pauseBack;
     public GameObject restart;
     public Slider hpSlider;
-    public Text dayText;
-    public Text killText;
+    public TMP_Text dayText;
+    public TMP_Text killText;
     public GameObject maskManager;
 
     private DataManager dataManager;

@@ -111,7 +111,6 @@ public class Enemy : MonoBehaviour
     {
         int currentDay = dataManager.GetCurrentDay();
         bool isDay = dataManager.GetIsDay();
-
         switch (enemyName)
         {
             case "Samurai":
@@ -147,7 +146,7 @@ public class Enemy : MonoBehaviour
                 else
                 {
                     enemyMaxHp = currentDay == 1 ? 40 : currentDay == 2 ? 80 : 90;
-                    attackDamage = currentDay == 1 ? 10 : (currentDay == 2 ? 10 : 20);
+                    attackDamage = currentDay == 1 ? 10 : currentDay == 2 ? 10 : 20;
                 }
                 break;
         }
