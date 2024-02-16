@@ -25,6 +25,10 @@ public class Player : MonoBehaviour
     float doubleAttackDelay;
     public Sword sword;
     int tmp = 0;
+    public GameObject delayImage;
+    public Text countdownText; // 카운트다운을 표시할 Text UI
+    private bool isCountingDown = false; // 더블 공격 카운트다운 중 여부
+    private float countdownTime = 10f; // 카운트다운 시간
 
     Rigidbody rigid;
     Animator anim;
@@ -62,7 +66,19 @@ public class Player : MonoBehaviour
     void Update()
     {
         Move();
-        //gameOver();
+        if (isCountingDown)
+        {
+            // 더블 공격 카운트다운 중일 때의 처리
+            countdownTime -= Time.deltaTime;
+            UpdateCountdownText();
+
+            if (countdownTime <= 0f)
+            {
+                // 카운트다운 종료 후 처리
+                countdownText.gameObject.SetActive(false);
+                isCountingDown = false;
+            }
+        }
     }
 
     //#.이동
@@ -147,18 +163,20 @@ public class Player : MonoBehaviour
     }
     public void DoubleAttack()
     {
-        doubleAttackDelay += Time.deltaTime;
-        if (doubleAttackDelay >= sword.doubleRate)
-        {
-            Debug.Log("더블 공격");
-            sword.StartDoubleSwing();
-            doubleAttackDelay = 0;
-            anim.SetTrigger("doDoubleAttack");
-        }
-        else
-        {
-            Debug.Log("더블쿨타임 : " + doubleAttackDelay);
-        }
+        Debug.Log("더블 공격");
+        sword.StartDoubleSwing();
+        doubleAttackDelay = 0;
+        anim.SetTrigger("doDoubleAttack");
+        // 카운트다운 시작
+        isCountingDown = true;
+        countdownTime = 10f;
+        UpdateCountdownText();
+        countdownText.gameObject.SetActive(true);
+    }
+    private void UpdateCountdownText()
+    {
+        int seconds = Mathf.CeilToInt(countdownTime);
+        countdownText.text = seconds.ToString();
     }
     void OnTriggerEnter(Collider other)
     {
