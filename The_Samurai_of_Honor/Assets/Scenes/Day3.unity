@@ -1987,10 +1987,6 @@ MonoBehaviour:
   bowelPrefab: {fileID: 7041162562112887346, guid: bdd0d8638c0082b4b9defb6021df592f, type: 3}
   skullPrefab: {fileID: 4545030263557739253, guid: dd9b6c9341cba7d4c8e489620e9de9ca, type: 3}
   samuraiPrefab: {fileID: 3817436712436703165, guid: d9eb5380a93d7244985f42acfd5b7ee7, type: 3}
-  playerHp: 0
-  isDay: 0
-  enemyCnt: 0
-  currentDay: 0
 --- !u!1 &435278096
 GameObject:
   m_ObjectHideFlags: 0
@@ -5890,14 +5886,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 983714627}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20380ed4b7f49d14b818a59e7711bd81, type: 3}
+  m_Script: {fileID: 11500000, guid: 80fee89bcf2dfcb41a3444d5330e20df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2010995243}
-  smoothSpeed: 0.125
+  smoothSpeed: 1
   offset: {x: 0, y: 20, z: -30}
-  rotationSpeed: 5
-  angleOffset: {x: -22, y: 0, z: 0}
+  rotationSpeed: 1
+  angleOffset: {x: -30, y: 0, z: 0}
 --- !u!81 &983714629
 AudioListener:
   m_ObjectHideFlags: 0
@@ -12175,7 +12171,7 @@ MonoBehaviour:
   - {fileID: 763233901}
   - {fileID: 0}
   joy: {fileID: 2144530864}
-  moveSpeed: 50
+  moveSpeed: 20
   rotateSpeed: 10
   sword: {fileID: 583576815}
 --- !u!136 &2010995241
@@ -12441,8 +12437,6 @@ MonoBehaviour:
   enemyObjs: []
   objectManager: {fileID: 428091010}
   diary: {fileID: 0}
-  currentDay: 0
-  isDay: 0
   spawnPoints:
   - {fileID: 1471111703}
   - {fileID: 158399612}
