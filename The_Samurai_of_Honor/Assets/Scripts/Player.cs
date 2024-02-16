@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class Player : MonoBehaviour
     public Sword sword;
     int tmp = 0;
     public GameObject delayImage;
-    public Text countdownText; // 카운트다운을 표시할 Text UI
+    public TMP_Text countdownText; // 카운트다운을 표시할 Text UI
     private bool isCountingDown = false; // 더블 공격 카운트다운 중 여부
     private float countdownTime = 10f; // 카운트다운 시간
 

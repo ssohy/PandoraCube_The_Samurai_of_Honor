@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: da2ea0033fbaa0242b8a89fe51363ff2
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Hakgyoansim Santteutbatang
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: d9a983c378df46c4181308143959fb04, type: 3}
+  - {fileID: 12800000, guid: 0589dcb6f4a507543afb0af913392935, type: 3}
+  - {fileID: 12800000, guid: 906afa22857cb9e438dac90ac900741c, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
