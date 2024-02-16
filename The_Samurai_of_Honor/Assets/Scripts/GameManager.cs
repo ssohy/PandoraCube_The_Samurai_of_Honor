@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
     public int playerHp;
 
     private DataManager dataManager;
-    int hp, cnt, day;
 
     public GameObject pauseBack;
     public GameObject restart;
@@ -38,6 +37,8 @@ public class GameManager : MonoBehaviour
     int tmp, tmp1;
 
 
+    int enemyKill;
+    public GameObject maskManager;
     void Awake()
     {
         dataManager = DataManager.GetInstance();
@@ -103,7 +104,7 @@ public class GameManager : MonoBehaviour
         while (stringReader != null)
         {
             string line = stringReader.ReadLine();
-            Debug.Log(line);
+            //Debug.Log(line);
 
             if (line == null)
                 break;
@@ -146,7 +147,6 @@ public class GameManager : MonoBehaviour
         int enemyPoint = spawnList[spawnIndex].point;
         GameObject enemy = objectManager.MakeObj(enemyObjs[enemyIndex]);
         enemy.transform.position = spawnPoints[enemyPoint].position;
-        //Debug.Log("위치 : " + enemy.transform.position);
         if (enemy != null)
         {
             enemy.SetActive(true);
@@ -191,25 +191,25 @@ public class GameManager : MonoBehaviour
 
     public void UpdateHPBar(int newHP)
     {
-        hpSlider.value = newHP; // HP 바의 값 업데이트
+        hpSlider.value = newHP;
     }
-    /*
+
     void MaskClear()
     {
-        if(enemyCnt >= 550)
+        enemyKill = dataManager.GetEnemyCount();
+        if(enemyKill >= 350)
         {
-
+            maskManager.GetComponent<MaskManager>().UpdateMaskStatus(1);
         }
-        else if(enemyCnt >= 450)
+        if (enemyKill >= 450)
         {
-            
+            maskManager.GetComponent<MaskManager>().UpdateMaskStatus(2);
         }
-        else if(enemyCnt >= 350)
+        if (enemyKill >= 550)
         {
-
+            maskManager.GetComponent<MaskManager>().UpdateMaskStatus(3);
         }
-    }*/
-
+    }
 
 }
 

@@ -4,27 +4,24 @@ using UnityEngine;
 
 public class Camera : MonoBehaviour
 {
-    public GameObject Target;               // 카메라가 따라다닐 타겟
+    public Transform target;
+    public float smoothSpeed = 0.125f;
+    public Vector3 offset;
 
-    public float offsetX = 0.0f;            // 카메라의 x좌표
-    public float offsetY = 10.0f;           // 카메라의 y좌표
-    public float offsetZ = -10.0f;          // 카메라의 z좌표
+    public float rotationSpeed = 5.0f;
+    public Vector3 angleOffset;
 
-    public float CameraSpeed = 10.0f;       // 카메라의 속도
-    Vector3 TargetPos;
-
-    public float angleX = 0.0f;
-    public float angleY = 0.0f;
-    public float angleZ = 0.0f;
-
-    void Update()
+    void FixedUpdate()
     {
-        TargetPos = new Vector3(
-            Target.transform.position.x + offsetX,
-            Target.transform.position.y + offsetY,
-            Target.transform.position.z + offsetZ
-            );
-        transform.position = Vector3.Lerp(transform.position, TargetPos, Time.deltaTime * CameraSpeed);
-        transform.rotation = Quaternion.Euler(angleX, angleY, angleZ);
+        Vector3 desiredPosition = target.position + offset;
+
+        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+
+        transform.position = smoothedPosition;
+
+        Quaternion targetRotation = Quaternion.LookRotation(target.position - transform.position);
+
+        targetRotation.eulerAngles += angleOffset;
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 }
