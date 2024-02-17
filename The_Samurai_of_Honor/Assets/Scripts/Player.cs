@@ -79,7 +79,7 @@ public class Player : MonoBehaviour
             }
         }
     }
-
+    Vector3 lastMoveDirection = Vector3.forward;
     //#.¿Ãµø
     void Move()
     {
@@ -108,6 +108,7 @@ public class Player : MonoBehaviour
         }
         else
         {
+            transform.LookAt(transform.position + transform.forward);
             transform.rotation = Quaternion.Euler(0, 0, 0);
             anim.SetBool("isWalk", false);
         }
