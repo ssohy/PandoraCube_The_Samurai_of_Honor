@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
         InitializeHPBar();
     }
 
-    private void Update()
+    void Update()
     {
         curSpawnDelay += Time.deltaTime;
         if (curSpawnDelay > nextSpawnDelay && !spawnEnd)
@@ -175,19 +175,19 @@ public class GameManager : MonoBehaviour
     {
         dayText.text = "Day " + dataManager.GetCurrentDay().ToString();
         killText.text = dataManager.GetEnemyCount().ToString();
-        MaskClear();
     }
 
-    private void MaskClear()
+    /*
+    public void MaskClear()
     {
         enemyKill = dataManager.GetEnemyCount();
-        if (enemyKill >= 350)
-            maskManager.GetComponent<MaskManager>().UpdateMaskStatus(1);
+        if (enemyKill >= 0)
+            maskManager.GetComponent<MaskManager>().UpdateMaskStatus(0);
         if (enemyKill >= 450)
-            maskManager.GetComponent<MaskManager>().UpdateMaskStatus(2);
+            maskManager.GetComponent<MaskManager>().UpdateMaskStatus(1);
         if (enemyKill >= 550)
-            maskManager.GetComponent<MaskManager>().UpdateMaskStatus(3);
-    }
+            maskManager.GetComponent<MaskManager>().UpdateMaskStatus(2);
+    }*/
 
 }
 

@@ -21,7 +21,6 @@ public class Diary : MonoBehaviour
 
     public void UIClose()
     {
-        Debug.Log("버튼클릭됨");
         diaryImage.SetActive(false);
         Time.timeScale = 1f;
     }
