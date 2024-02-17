@@ -76,10 +76,19 @@ public class GameManager : MonoBehaviour
         #if UNITY_EDITOR
                 UnityEditor.EditorApplication.isPlaying = false;
         #else
-                        Application.Quit();
+                Application.Quit();
         #endif
     }
-
+    public void EndGame()
+    {
+        //GetComponent<ItemInit>().InitializeItem();
+        dataManager.SetPlayerHp(100);
+        dataManager.SetButterfly(0);
+        dataManager.SetCurrentDay(1);
+        dataManager.SetEnemyCount(0);
+        dataManager.SetIsDay(true);
+        UpdateHPBar(100);
+    }
     public void ReadSpawnFile()
     {
         spawnList.Clear();
@@ -143,7 +152,7 @@ public class GameManager : MonoBehaviour
         pauseBack.SetActive(!pauseBack.activeSelf);
         restart.SetActive(!restart.activeSelf);
 
-        Time.timeScale = Time.timeScale == 0f ? 1f : 0f; // Toggle pause
+        Time.timeScale = Time.timeScale == 0f ? 1f : 0f;
     }
 
     public void RestartGame()
@@ -151,7 +160,7 @@ public class GameManager : MonoBehaviour
         PauseGame();
     }
 
-    private void InitializeHPBar()
+    public void InitializeHPBar()
     {
         hpSlider.maxValue = 100;
         hpSlider.value = dataManager.GetPlayerHp();

@@ -7,6 +7,11 @@ public class SoundManager : MonoBehaviour
     private static SoundManager instance;
     public AudioSource backgroundMusic;
 
+
+    public static SoundManager GetInstance()
+    {
+        return instance;
+    }
     void Awake()
     {
         if (instance == null)
@@ -18,5 +23,15 @@ public class SoundManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void MusicPause()
+    {
+        backgroundMusic.Pause();
+    }
+
+    public void MusicPlay()
+    {
+        backgroundMusic.Play();
     }
 }

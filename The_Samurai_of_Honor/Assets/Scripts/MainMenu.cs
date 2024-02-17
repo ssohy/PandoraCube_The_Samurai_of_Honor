@@ -14,4 +14,9 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Mask");
     }
+
+    public void BackPage()
+    {
+        SceneManager.LoadScene("Start");
+    }
 }
