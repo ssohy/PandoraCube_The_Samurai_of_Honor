@@ -47,7 +47,7 @@ public class DataManager : MonoBehaviour
         }
     }
 
-    private void InitializeData()
+    public void InitializeData()
     {
         playerHp = 100;
         enemyCnt = 0;

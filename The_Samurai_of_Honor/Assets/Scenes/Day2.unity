@@ -759,7 +759,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 21055049}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -74.12, y: 16.75, z: 82}
+  m_LocalPosition: {x: -73.75, y: 23.16, z: 82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1459048730}
@@ -5078,6 +5078,8 @@ GameObject:
   - component: {fileID: 118141302}
   - component: {fileID: 118141301}
   - component: {fileID: 118141304}
+  - component: {fileID: 118141305}
+  - component: {fileID: 118141306}
   m_Layer: 0
   m_Name: light (4)
   m_TagString: Energy
@@ -5224,6 +5226,30 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3958770277684823056, guid: 4f603ea1c92372f449a25c982c08c721, type: 3}
+--- !u!114 &118141305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118141299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cef3780f566d914ea9e00213f6a8601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &118141306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118141299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab73d3122a8ac14418891e7515597439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &120357069
 GameObject:
   m_ObjectHideFlags: 0
@@ -7651,7 +7677,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171167592}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 124.25, y: 18.04, z: -452}
+  m_LocalPosition: {x: 125.33, y: 23.54, z: -452}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1459048730}
@@ -22471,6 +22497,8 @@ GameObject:
   - component: {fileID: 433748324}
   - component: {fileID: 433748323}
   - component: {fileID: 433748326}
+  - component: {fileID: 433748327}
+  - component: {fileID: 433748328}
   m_Layer: 0
   m_Name: light (6)
   m_TagString: Energy
@@ -22617,6 +22645,30 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3958770277684823056, guid: 4f603ea1c92372f449a25c982c08c721, type: 3}
+--- !u!114 &433748327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433748321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cef3780f566d914ea9e00213f6a8601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &433748328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433748321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab73d3122a8ac14418891e7515597439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &436095907
 GameObject:
   m_ObjectHideFlags: 0
@@ -29333,6 +29385,8 @@ GameObject:
   - component: {fileID: 577090703}
   - component: {fileID: 577090702}
   - component: {fileID: 577090705}
+  - component: {fileID: 577090706}
+  - component: {fileID: 577090707}
   m_Layer: 0
   m_Name: light
   m_TagString: Energy
@@ -29479,6 +29533,30 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3958770277684823056, guid: 4f603ea1c92372f449a25c982c08c721, type: 3}
+--- !u!114 &577090706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577090700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cef3780f566d914ea9e00213f6a8601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &577090707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577090700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab73d3122a8ac14418891e7515597439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &577897506
 GameObject:
   m_ObjectHideFlags: 0
@@ -33545,6 +33623,7 @@ MonoBehaviour:
   player: {fileID: 677998486}
   playerLight: {fileID: 460456644}
   gameLight: {fileID: 1192807742}
+  endDiary: {fileID: 0}
   daySkybox: {fileID: 2100000, guid: 170f2a047c448444ca1b8e2d20f504f1, type: 2}
   nightSkybox: {fileID: 2100000, guid: b73dc2c0c9eceae4486bdb5b744fceb9, type: 2}
   butterfly: 0
@@ -34246,7 +34325,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 693659956}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11, y: 16.62, z: 195}
+  m_LocalPosition: {x: -10.88, y: 24.32, z: 195}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1459048730}
@@ -40867,6 +40946,8 @@ GameObject:
   - component: {fileID: 848272614}
   - component: {fileID: 848272613}
   - component: {fileID: 848272616}
+  - component: {fileID: 848272617}
+  - component: {fileID: 848272618}
   m_Layer: 0
   m_Name: light (8)
   m_TagString: Energy
@@ -41013,6 +41094,30 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3958770277684823056, guid: 4f603ea1c92372f449a25c982c08c721, type: 3}
+--- !u!114 &848272617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 848272611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cef3780f566d914ea9e00213f6a8601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &848272618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 848272611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab73d3122a8ac14418891e7515597439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &848659308
 GameObject:
   m_ObjectHideFlags: 0
@@ -51642,7 +51747,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1063148703}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 111.86, y: 18.46, z: 469.38}
+  m_LocalPosition: {x: 113.86, y: 24.96, z: 469.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1459048730}
@@ -52633,7 +52738,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1078391898}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -63.17, y: 16.54, z: -376}
+  m_LocalPosition: {x: -63.13, y: 23.62, z: -376}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1459048730}
@@ -54662,7 +54767,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1109554636}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -70.24, y: 17.5, z: -549}
+  m_LocalPosition: {x: -69.57, y: 24.54, z: -549}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1459048730}
@@ -56062,6 +56167,8 @@ GameObject:
   - component: {fileID: 1143288636}
   - component: {fileID: 1143288635}
   - component: {fileID: 1143288638}
+  - component: {fileID: 1143288639}
+  - component: {fileID: 1143288640}
   m_Layer: 0
   m_Name: light (9)
   m_TagString: Energy
@@ -56208,6 +56315,30 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3958770277684823056, guid: 4f603ea1c92372f449a25c982c08c721, type: 3}
+--- !u!114 &1143288639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143288633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cef3780f566d914ea9e00213f6a8601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1143288640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143288633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab73d3122a8ac14418891e7515597439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1144692938
 GameObject:
   m_ObjectHideFlags: 0
@@ -61725,6 +61856,8 @@ GameObject:
   - component: {fileID: 1243360260}
   - component: {fileID: 1243360259}
   - component: {fileID: 1243360262}
+  - component: {fileID: 1243360263}
+  - component: {fileID: 1243360264}
   m_Layer: 0
   m_Name: light (2)
   m_TagString: Energy
@@ -61871,6 +62004,30 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3958770277684823056, guid: 4f603ea1c92372f449a25c982c08c721, type: 3}
+--- !u!114 &1243360263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243360257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cef3780f566d914ea9e00213f6a8601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1243360264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243360257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab73d3122a8ac14418891e7515597439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1243938965
 GameObject:
   m_ObjectHideFlags: 0
@@ -71004,6 +71161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1415826985}
   - component: {fileID: 1415826984}
+  - component: {fileID: 1415826986}
   m_Layer: 0
   m_Name: Butterfly
   m_TagString: Butterfly
@@ -71048,6 +71206,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1415826986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415826983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab73d3122a8ac14418891e7515597439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1418685032
 GameObject:
   m_ObjectHideFlags: 0
@@ -75304,7 +75474,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1524612775}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 114.88, y: 16.33, z: 257}
+  m_LocalPosition: {x: 116.13, y: 22.58, z: 257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1459048730}
@@ -75866,6 +76036,8 @@ GameObject:
   - component: {fileID: 1536924523}
   - component: {fileID: 1536924522}
   - component: {fileID: 1536924525}
+  - component: {fileID: 1536924526}
+  - component: {fileID: 1536924527}
   m_Layer: 0
   m_Name: light (3)
   m_TagString: Energy
@@ -76012,6 +76184,30 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3958770277684823056, guid: 4f603ea1c92372f449a25c982c08c721, type: 3}
+--- !u!114 &1536924526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536924520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cef3780f566d914ea9e00213f6a8601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1536924527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536924520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab73d3122a8ac14418891e7515597439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1537879345
 GameObject:
   m_ObjectHideFlags: 0
@@ -78563,6 +78759,8 @@ GameObject:
   - component: {fileID: 1580793653}
   - component: {fileID: 1580793652}
   - component: {fileID: 1580793655}
+  - component: {fileID: 1580793656}
+  - component: {fileID: 1580793657}
   m_Layer: 0
   m_Name: light (7)
   m_TagString: Energy
@@ -78709,6 +78907,30 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3958770277684823056, guid: 4f603ea1c92372f449a25c982c08c721, type: 3}
+--- !u!114 &1580793656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580793650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cef3780f566d914ea9e00213f6a8601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1580793657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580793650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab73d3122a8ac14418891e7515597439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1585625887
 GameObject:
   m_ObjectHideFlags: 0
@@ -88719,6 +88941,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1817697378}
   - component: {fileID: 1817697377}
+  - component: {fileID: 1817697379}
   m_Layer: 0
   m_Name: Butterfly2
   m_TagString: Butterfly
@@ -88763,6 +88986,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 146.277, z: 0}
+--- !u!114 &1817697379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817697376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab73d3122a8ac14418891e7515597439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1817727730
 GameObject:
   m_ObjectHideFlags: 0
@@ -90075,6 +90310,8 @@ GameObject:
   - component: {fileID: 1839399681}
   - component: {fileID: 1839399680}
   - component: {fileID: 1839399683}
+  - component: {fileID: 1839399684}
+  - component: {fileID: 1839399685}
   m_Layer: 0
   m_Name: light (1)
   m_TagString: Energy
@@ -90221,6 +90458,30 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3958770277684823056, guid: 4f603ea1c92372f449a25c982c08c721, type: 3}
+--- !u!114 &1839399684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839399678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cef3780f566d914ea9e00213f6a8601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1839399685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839399678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab73d3122a8ac14418891e7515597439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1839447271
 GameObject:
   m_ObjectHideFlags: 0
@@ -91624,7 +91885,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1876485580}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -94, y: 15.54, z: 511}
+  m_LocalPosition: {x: -95.58, y: 21.79, z: 511}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1459048730}
@@ -95618,7 +95879,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1957015990}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 89.97, y: 17.08, z: -285}
+  m_LocalPosition: {x: 90.01, y: 24.07, z: -285}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1459048730}
@@ -102922,6 +103183,8 @@ GameObject:
   - component: {fileID: 2128679854}
   - component: {fileID: 2128679853}
   - component: {fileID: 2128679856}
+  - component: {fileID: 2128679857}
+  - component: {fileID: 2128679858}
   m_Layer: 0
   m_Name: light (5)
   m_TagString: Energy
@@ -103068,6 +103331,30 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3958770277684823056, guid: 4f603ea1c92372f449a25c982c08c721, type: 3}
+--- !u!114 &2128679857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128679851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cef3780f566d914ea9e00213f6a8601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2128679858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128679851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab73d3122a8ac14418891e7515597439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2128928836
 GameObject:
   m_ObjectHideFlags: 0

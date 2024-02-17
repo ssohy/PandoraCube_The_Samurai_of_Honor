@@ -14,9 +14,13 @@ public class EndingVideo : MonoBehaviour
     public VideoPlayer normalEnding1;
     GameObject playEnding;
     VideoPlayer playEnding1;
+
+    //public AudioSource backMusic;
+    public GameObject soundManager;
     void Awake()
     {
         dataManager = DataManager.GetInstance();
+        soundManager = GameObject.Find("SoundManager");
     }
 
     private void PlayEndingVideo()
@@ -42,6 +46,7 @@ public class EndingVideo : MonoBehaviour
             playEnding = normalEnding;
             playEnding1 = normalEnding1;
         }
+        soundManager.GetComponent<SoundManager>().MusicPause();
         playEnding1.gameObject.SetActive(true);
         playEnding1.loopPointReached += EndReached;
     }
@@ -56,6 +61,15 @@ public class EndingVideo : MonoBehaviour
     }
     void EndReached(UnityEngine.Video.VideoPlayer vp)
     {
+        gameObject.SetActive(false); // 엔딩 영상 비활성화
+        SceneManager.LoadScene("Start"); // start 씬으로 전환
+    }
+
+    public void Skip()
+    {
+        playEnding1.Pause();
+        Time.timeScale = 1f;
+        gameObject.SetActive(false);
         SceneManager.LoadScene("Start"); // start 씬으로 전환
     }
 }

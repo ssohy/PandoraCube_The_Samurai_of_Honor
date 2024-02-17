@@ -16,6 +16,7 @@ public class Item : MonoBehaviour
     public GameObject gameLight;
     private bool isSpotlightActive = false;
 
+    public GameObject endDiary;
     public Material daySkybox;
     public Material nightSkybox;
     private bool isNight = false;
@@ -54,17 +55,20 @@ public class Item : MonoBehaviour
     {
         if (other.tag == "Energy")
         {
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
             energyCnt++;
             energyTime = energyCnt * 10;
             UpdateEnergyBar(energyTime);
         }
         if(other.tag == "Butterfly")
         {
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
             butterfly++;
             dataManager.SetButterfly(butterfly);
-            
+        }
+        if(other.gameObject == endDiary)
+        {
+            DayStart();
         }
     }
 

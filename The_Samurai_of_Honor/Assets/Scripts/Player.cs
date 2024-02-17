@@ -208,7 +208,17 @@ public class Player : MonoBehaviour
         if (other.tag == "End")
         {
             if (currentDay == 3)
-                gameManager.gameOver();
+            {
+                currentDay = 1;
+                isDay = true;
+                dataManager.SetCurrentDay(currentDay);
+                dataManager.SetIsDay(isDay);
+                dataManager.SetButterfly(0);
+                dataManager.SetEnemyCount(0);
+                gameManager.EndGame();
+                SceneManager.LoadScene("Strat");
+                Debug.Log("데이터 초기화");
+            }
             else
             {
                 currentDay++;

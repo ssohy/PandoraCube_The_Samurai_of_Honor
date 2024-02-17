@@ -7,8 +7,11 @@ public class Videoplayer : MonoBehaviour
 {
     public VideoPlayer video;
     public AudioSource backMusic;
+
+    GameObject soundManager;
     void Awake()
     {
+        soundManager = GameObject.Find("SoundManager");
         Time.timeScale = 0f;
         video.loopPointReached += EndReached;
     }
@@ -16,7 +19,15 @@ public class Videoplayer : MonoBehaviour
     void EndReached(UnityEngine.Video.VideoPlayer vp)
     {
         Time.timeScale = 1f;
-        gameObject.SetActive(false); // 프롤로그 영상을 비활성화
-        backMusic.Play();
+        gameObject.SetActive(false);
+        soundManager.GetComponent<SoundManager>().MusicPlay();
+    }
+
+    public void Skip()
+    {
+        video.Pause();
+        Time.timeScale = 1f;
+        gameObject.SetActive(false);
+        soundManager.GetComponent<SoundManager>().MusicPlay();
     }
 }
