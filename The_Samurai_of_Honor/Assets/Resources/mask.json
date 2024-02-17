@@ -1,5 +1,5 @@
 {
-    "masks": [
+    "mask": [
         {
             "name": "MaskA",
             "description": "Kill 350 Enemies",

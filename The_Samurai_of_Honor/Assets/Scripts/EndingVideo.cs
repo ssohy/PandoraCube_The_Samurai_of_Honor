@@ -15,12 +15,18 @@ public class EndingVideo : MonoBehaviour
     GameObject playEnding;
     VideoPlayer playEnding1;
 
-    //public AudioSource backMusic;
+    
     public GameObject soundManager;
+
+    public GameObject gameManager;
+    int currentDay;
+    bool isDay;
+
     void Awake()
     {
         dataManager = DataManager.GetInstance();
         soundManager = GameObject.Find("SoundManager");
+        gameManager = GameObject.Find("GameManager");
     }
 
     private void PlayEndingVideo()
@@ -56,6 +62,16 @@ public class EndingVideo : MonoBehaviour
         //플레이어가 end다이어리를 먹으면 영상재생
         if(other.tag == "Player")
         {
+            //gameManager.GetComponent<GameManager>().MaskClear();
+            currentDay = 1;
+            isDay = true;
+            dataManager.SetCurrentDay(currentDay);
+            dataManager.SetIsDay(isDay);
+            dataManager.SetButterfly(0);
+            dataManager.SetEnemyCount(0);
+            gameManager.GetComponent<GameManager>().EndGame();
+           //SceneManager.LoadScene("Strat");
+            Debug.Log("데이터 초기화");
             PlayEndingVideo();
         }
     }
@@ -72,4 +88,5 @@ public class EndingVideo : MonoBehaviour
         gameObject.SetActive(false);
         SceneManager.LoadScene("Start"); // start 씬으로 전환
     }
+
 }

@@ -12,6 +12,7 @@ public class Videoplayer : MonoBehaviour
     void Awake()
     {
         soundManager = GameObject.Find("SoundManager");
+        soundManager.GetComponent<SoundManager>().MusicPause();
         Time.timeScale = 0f;
         video.loopPointReached += EndReached;
     }

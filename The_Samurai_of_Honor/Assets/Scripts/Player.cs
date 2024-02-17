@@ -209,15 +209,16 @@ public class Player : MonoBehaviour
         {
             if (currentDay == 3)
             {
-                currentDay = 1;
-                isDay = true;
-                dataManager.SetCurrentDay(currentDay);
-                dataManager.SetIsDay(isDay);
-                dataManager.SetButterfly(0);
-                dataManager.SetEnemyCount(0);
-                gameManager.EndGame();
-                SceneManager.LoadScene("Strat");
-                Debug.Log("데이터 초기화");
+                //gameManager.MaskClear();
+                //currentDay = 1;
+                //isDay = true;
+                //dataManager.SetCurrentDay(currentDay);
+                //dataManager.SetIsDay(isDay);
+                //dataManager.SetButterfly(0);
+                //dataManager.SetEnemyCount(0);
+                //gameManager.EndGame();
+                //SceneManager.LoadScene("Strat");
+                //Debug.Log("데이터 초기화");
             }
             else
             {
@@ -234,10 +235,6 @@ public class Player : MonoBehaviour
                     gameManager.ReadSpawnFile();
             }
         }
-    }
-    void LoadStartScene()
-    {
-        SceneManager.LoadScene("Start");
     }
 
     IEnumerator OnDamage()
@@ -258,7 +255,4 @@ public class Player : MonoBehaviour
         //FreezeRotation();
         StopToWall();
     }
-
-
-
 }
