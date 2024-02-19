@@ -62,16 +62,7 @@ public class EndingVideo : MonoBehaviour
         //플레이어가 end다이어리를 먹으면 영상재생
         if(other.tag == "Player")
         {
-            //gameManager.GetComponent<GameManager>().MaskClear();
-            currentDay = 1;
-            isDay = true;
-            dataManager.SetCurrentDay(currentDay);
-            dataManager.SetIsDay(isDay);
-            dataManager.SetButterfly(0);
-            dataManager.SetEnemyCount(0);
             gameManager.GetComponent<GameManager>().EndGame();
-           //SceneManager.LoadScene("Strat");
-            Debug.Log("데이터 초기화");
             PlayEndingVideo();
         }
     }

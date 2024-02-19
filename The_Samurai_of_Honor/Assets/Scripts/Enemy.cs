@@ -18,8 +18,6 @@ public class Enemy : MonoBehaviour
     public int currentDay;
 
     Rigidbody rigid;
-    BoxCollider boxCollider;
-    CapsuleCollider capsuleCollider;
     NavMeshAgent nav;
 
     public Transform target;
@@ -42,19 +40,12 @@ public class Enemy : MonoBehaviour
         target = player.GetComponent<Transform>();
 
         rigid = GetComponent<Rigidbody>();
-        boxCollider = GetComponent<BoxCollider>();
-        capsuleCollider = GetComponent<CapsuleCollider>();
         nav = GetComponent<NavMeshAgent>();
         //enemyCnt = gameManager.enemyCnt;
         enemyCnt = dataManager.GetEnemyCount();
         anim = GetComponent<Animator>();
     }
 
-    /*void ChaseStart()
-    {
-        isChase = true;
-        anim.SetBool("isWalk", true);
-    }*/
     void Update()
     {
         float distance = Vector3.Distance(transform.position, target.position);
@@ -83,8 +74,10 @@ public class Enemy : MonoBehaviour
     {
         if(other.tag == "Melee")
         {
+            Debug.Log("ÅÂ±×µÊ");
             Sword sword = other.GetComponent<Sword>();
             enemyCurHp -= sword.damage;
+            
             StartCoroutine(OnDamage());
         }
     }
@@ -95,7 +88,9 @@ public class Enemy : MonoBehaviour
         {
             anim.SetTrigger("doDie");
             gameObject.SetActive(false);
-            dataManager.SetEnemyCount(++enemyCnt);
+            enemyCnt = dataManager.GetEnemyCount();
+            enemyCnt++;
+            dataManager.SetEnemyCount(enemyCnt);
         }
         yield break;
     }
@@ -112,44 +107,45 @@ public class Enemy : MonoBehaviour
     {
         int currentDay = dataManager.GetCurrentDay();
         bool isDay = dataManager.GetIsDay();
-        switch (enemyName)
+
+        if(enemyName == "Samurai")
         {
-            case "Samurai":
-                if (isDay)
-                {
-                    enemyMaxHp = currentDay == 3 ? 70 : 40;
-                    attackDamage = 10;
-                }
-                else
-                {
-                    enemyMaxHp = currentDay == 3 ? 60 : 50;
-                    attackDamage = 10;
-                }
-                break;
-            case "Bowel":
-                if (isDay)
-                {
-                    enemyMaxHp = 60;
-                    attackDamage = 40;
-                }
-                else
-                {
-                    enemyMaxHp = currentDay == 1 ? 30 : currentDay == 2 ? 40 : 60;
-                    attackDamage = currentDay == 1 ? 20 : currentDay == 2 ? 30 : 40;
-                }
-                break;
-            case "Skull":
-                if (isDay)
-                {
-                    enemyMaxHp = 40;
-                    attackDamage = 10;
-                }
-                else
-                {
-                    enemyMaxHp = currentDay == 1 ? 40 : currentDay == 2 ? 80 : 90;
-                    attackDamage = currentDay == 1 ? 10 : currentDay == 2 ? 10 : 20;
-                }
-                break;
+            if (isDay)
+            {
+                enemyMaxHp = currentDay == 3 ? 70 : 40;
+                attackDamage = 10;
+            }
+            else
+            {
+                enemyMaxHp = currentDay == 3 ? 60 : 50;
+                attackDamage = 10;
+            }
+        }
+        else if(enemyName == "Bowel")
+        {
+            if (isDay)
+            {
+                enemyMaxHp = 60;
+                attackDamage = 40;
+            }
+            else
+            {
+                enemyMaxHp = currentDay == 1 ? 30 : currentDay == 2 ? 40 : 60;
+                attackDamage = currentDay == 1 ? 20 : currentDay == 2 ? 30 : 40;
+            }
+        }
+        else
+        {
+            if (isDay)
+            {
+                enemyMaxHp = 40;
+                attackDamage = 10;
+            }
+            else
+            {
+                enemyMaxHp = currentDay == 1 ? 40 : currentDay == 2 ? 80 : 90;
+                attackDamage = currentDay == 1 ? 10 : currentDay == 2 ? 10 : 20;
+            }
         }
         enemyCurHp = enemyMaxHp;
     }

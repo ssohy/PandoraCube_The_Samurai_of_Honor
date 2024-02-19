@@ -68,8 +68,6 @@
 3,Samurai,2
 10,Samurai,3
 4,Samurai,4
-5,Bowel,5
-4,Skull,6
 3,Skull,7
 5,Bowel,7
 2,Bowel,6
@@ -132,6 +130,8 @@
 8,Bowel,6
 7,Bowel,6
 6,Bowel,7
+1,Bowel,8
+2,Skull,1
 7,Skull,5
 2,Skull,7
 3,Skull,6
