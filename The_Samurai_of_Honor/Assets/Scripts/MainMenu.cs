@@ -5,8 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    private DataManager dataManager;
+    public GameObject maskManager;
+    private void Awake()
+    {
+        dataManager = DataManager.GetInstance();
+    }
     public void GameStart()
     {
+        dataManager.SetEnemyCount(0);
         SceneManager.LoadScene("Day1");
     }
 

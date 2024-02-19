@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
 
     int enemyCnt;
     private DataManager dataManager;
-
+    public GameObject gameOverImg;
 
     void Awake()
     {
@@ -79,7 +79,7 @@ public class Player : MonoBehaviour
             }
         }
     }
-    Vector3 lastMoveDirection = Vector3.forward;
+
     //#.¿Ãµø
     void Move()
     {
@@ -179,6 +179,13 @@ public class Player : MonoBehaviour
         int seconds = Mathf.CeilToInt(countdownTime);
         countdownText.text = seconds.ToString();
     }
+
+    void LoadStartScene()
+    {
+        gameManager.GetComponent<GameManager>().EndGame();
+        gameOverImg.SetActive(false);
+        SceneManager.LoadScene("Start");
+    }
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy")
@@ -194,7 +201,7 @@ public class Player : MonoBehaviour
             if (dataManager.GetPlayerHp() <= 0)
             {
                 anim.SetTrigger("doDie");
-
+                gameOverImg.SetActive(true);
                 Invoke("LoadStartScene", 5f);
             }
         }

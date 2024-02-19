@@ -95,7 +95,6 @@ public class ObjectManager : MonoBehaviour
                 targetPool = skull;
                 break;
         }
-
         if (targetPool != null)
         {
             foreach (var obj in targetPool)

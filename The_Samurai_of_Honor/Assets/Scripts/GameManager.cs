@@ -33,11 +33,10 @@ public class GameManager : MonoBehaviour
 
     private int currentDay;
     private bool isDay;
-    private int enemyKill;
 
     private void Awake()
     {
-        Application.targetFrameRate = 60;
+        //Application.targetFrameRate = 60;
         dataManager = DataManager.GetInstance();
         playerHp = dataManager.GetPlayerHp();
         currentDay = dataManager.GetCurrentDay();
@@ -46,7 +45,7 @@ public class GameManager : MonoBehaviour
         player.transform.position = spawnMidwayEndPoint[0].position;
 
         spawnList = new List<Spawn>();
-        enemyObjs = new string[] { "Samurai", "Bowel", "Skull" };
+        enemyObjs = new string[] {"Samurai", "Bowel", "Skull"};
 
         DayStart();
         pauseBack.SetActive(false);
@@ -81,11 +80,10 @@ public class GameManager : MonoBehaviour
     }
     public void EndGame()
     {
-        //GetComponent<ItemInit>().InitializeItem();
+        //죽인 적의 수 초기화는 Start버튼 클릭할 때
         dataManager.SetPlayerHp(100);
         dataManager.SetButterfly(0);
         dataManager.SetCurrentDay(1);
-        dataManager.SetEnemyCount(0);
         dataManager.SetIsDay(true);
         UpdateHPBar(100);
     }
@@ -113,7 +111,6 @@ public class GameManager : MonoBehaviour
             };
             spawnList.Add(spawnData);
         }
-
         stringReader.Close();
         nextSpawnDelay = spawnList[0].delay;
     }
@@ -128,8 +125,8 @@ public class GameManager : MonoBehaviour
 
         int enemyIndex = System.Array.IndexOf(enemyObjs, spawnList[spawnIndex].type);
         int enemyPoint = spawnList[spawnIndex].point;
-
         GameObject enemy = objectManager.MakeObj(enemyObjs[enemyIndex]);
+        
         if (enemy != null)
         {
             enemy.transform.position = spawnPoints[enemyPoint].position;
@@ -144,7 +141,8 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        nextSpawnDelay = spawnList[spawnIndex].delay;
+        //nextSpawnDelay = spawnList[spawnIndex].delay;
+        nextSpawnDelay = 1f;
     }
 
     public void PauseGame()
@@ -176,18 +174,5 @@ public class GameManager : MonoBehaviour
         dayText.text = "Day " + dataManager.GetCurrentDay().ToString();
         killText.text = dataManager.GetEnemyCount().ToString();
     }
-
-    /*
-    public void MaskClear()
-    {
-        enemyKill = dataManager.GetEnemyCount();
-        if (enemyKill >= 0)
-            maskManager.GetComponent<MaskManager>().UpdateMaskStatus(0);
-        if (enemyKill >= 450)
-            maskManager.GetComponent<MaskManager>().UpdateMaskStatus(1);
-        if (enemyKill >= 550)
-            maskManager.GetComponent<MaskManager>().UpdateMaskStatus(2);
-    }*/
-
 }
 
